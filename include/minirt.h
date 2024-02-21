@@ -9,8 +9,8 @@
 
 typedef struct s_info
 {
-	int		argc;
-	char	**argv;
+	int			argc;
+	char		**argv;
 }	t_info;
 
 #endif

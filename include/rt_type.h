@@ -42,7 +42,7 @@ typedef struct s_light
 	t_color	color;
 }	t_light;
 
-typedef struct s_rt_info
+typedef struct s_dimension
 {
 	t_point		cam_point;
 	t_vector	cam_vector;
@@ -50,6 +50,6 @@ typedef struct s_rt_info
 	t_light		ambient;
 	t_list		light_list;
 	t_list		obj_list;
-}	t_rt_info;
+}	t_dimension;
 
 #endif
