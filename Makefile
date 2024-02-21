@@ -11,7 +11,7 @@ SRCS_GNL =	get_next_line.c \
 			get_next_line_utils.c
 
 SRCS = \
-	$(addprefix gnl/, $(SRCS_GNL)) \
+	$(addprefix get_next_line/, $(SRCS_GNL)) \
 	$(addprefix src/parse/, $(SRCS_PARSE)) \
 	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
