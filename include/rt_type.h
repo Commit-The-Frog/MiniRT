@@ -52,4 +52,11 @@ typedef struct s_dimension
 	t_list		obj_list;
 }	t_dimension;
 
+typedef struct s_info
+{
+	int		argc;
+	char	**argv;
+	int		fd;
+}	t_info;
+
 #endif

@@ -1,16 +1,19 @@
 .DEFAULT_GOAL := all
 SRCS_EXEC = main.c
 
-SRCS_BUILTIN = \
-
-SRCS_PARSE = parse.c
+SRCS_PARSE =	parse.c \
+				file_control.c \
+				error.c
 
 SRCS_ETC = \
 
+SRCS_GNL =	get_next_line.c \
+			get_next_line_utils.c
+
 SRCS = \
-	$(addprefix exec/, $(SRCS_EXEC)) \
-	$(addprefix builtin/, $(SRCS_BUILTIN)) \
-	$(addprefix parse/, $(SRCS_PARSE)) \
+	$(addprefix gnl/, $(SRCS_GNL)) \
+	$(addprefix src/parse/, $(SRCS_PARSE)) \
+	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
 LIBFT_DIR = libft
 LIBFT_NAME = ft
@@ -29,6 +32,8 @@ all :
 $(LIBFT) :
 	@ echo "MINIRT : make $(LIBFT)"
 	@ make -C $(LIBFT_DIR)
+
+$(GNL_OBJS)
 
 $(NAME) : $(LIBFT) $(OBJS)
 	@$(CC) -o $(NAME) $(OBJS) -l$(LIBFT_NAME) -L$(LIBFT_DIR) -lreadline

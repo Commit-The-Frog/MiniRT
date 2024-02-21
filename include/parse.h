@@ -1,6 +1,8 @@
 #ifndef PARSE_H
 # define PARSE_H
 
+#include "minirt.h"
+
 //	parse.c
 void	parse(t_info *info, t_dimension *dimension);
 //	error.c
