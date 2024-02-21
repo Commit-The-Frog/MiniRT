@@ -2,8 +2,10 @@
 SRCS_EXEC = main.c
 
 SRCS_PARSE =	parse.c \
-				file_control.c \
-				error.c
+				util.c \
+				env.c \
+				object.c \
+				convert.c
 
 SRCS_ETC = \
 
@@ -20,7 +22,7 @@ LIBFT_NAME = ft
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
-CC = cc -MMD -MP -Wall -Wextra -Werror
+CC = cc -MMD -MP -Wall -Wextra -Werror -fsanitize=address -g
 MLX = -lmlx -framework OpenGL -framework AppKit
 NAME = miniRT
 -include $(DEPS)
@@ -31,7 +33,7 @@ all :
 
 $(LIBFT) :
 	@ echo "MINIRT : make $(LIBFT)"
-	@ make -C $(LIBFT_DIR)
+	@ make bonus -C $(LIBFT_DIR)
 
 $(GNL_OBJS)
 
