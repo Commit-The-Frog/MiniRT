@@ -1,11 +1,11 @@
 .DEFAULT_GOAL := all
-SRCS_EXEC = \
+SRCS_EXEC = main.c
 
 SRCS_BUILTIN = \
 
-SRCS_PARSE = \
+SRCS_PARSE = parse.c
 
-SRCS_ETC =
+SRCS_ETC = \
 
 SRCS = \
 	$(addprefix exec/, $(SRCS_EXEC)) \
@@ -19,15 +19,15 @@ OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 CC = cc -MMD -MP -Wall -Wextra -Werror
 MLX = -lmlx -framework OpenGL -framework AppKit
-NAME = minishell
+NAME = miniRT
 -include $(DEPS)
 
 all :
-	@echo "MINISHELL : make $(NAME)"
+	@echo "MINIRT : make $(NAME)"
 	@make $(NAME)
 
 $(LIBFT) :
-	@ echo "MINISHELL : make $(LIBFT)"
+	@ echo "MINIRT : make $(LIBFT)"
 	@ make -C $(LIBFT_DIR)
 
 $(NAME) : $(LIBFT) $(OBJS)
@@ -37,17 +37,17 @@ $(NAME) : $(LIBFT) $(OBJS)
 	@$(CC) -c $< -I$(LIBFT_DIR) -Iinclude -o $@
 
 clean :
-	@echo "MINISHELL : make clean"
+	@echo "MINIRT : make clean"
 	@rm -f $(OBJS) $(DEPS) $(BONUS)
 	@make -C $(LIBFT_DIR) clean
 
 fclean :
-	@echo "MINISHELL : make fclean"
+	@echo "MINIRT : make fclean"
 	@rm -f $(OBJS) $(NAME) $(DEPS)
 	@make -C $(LIBFT_DIR) fclean
 
 re : fclean
-	@ echo "MINISHELL : make re"
+	@ echo "MINIRT : make re"
 	@make all
 
 .PHONY: all clean fclean re
