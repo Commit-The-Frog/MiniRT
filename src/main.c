@@ -8,4 +8,5 @@ int main(int argc, char *argv[])
 	info.argc = argc;
 	info.argv = argv;
 	parse(&info, &dimension);
+	cal_main(&dimension);
 }

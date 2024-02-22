@@ -7,6 +7,11 @@ SRCS_PARSE =	parse.c \
 				object.c \
 				convert.c
 
+SRCS_CALCUL =	cal_main.c \
+				cal_util.c
+
+SRCS_LINEAR =	product.c
+
 SRCS_ETC = \
 
 SRCS_GNL =	get_next_line.c \
@@ -15,6 +20,8 @@ SRCS_GNL =	get_next_line.c \
 SRCS = \
 	$(addprefix get_next_line/, $(SRCS_GNL)) \
 	$(addprefix src/parse/, $(SRCS_PARSE)) \
+	$(addprefix src/calculate/, $(SRCS_CALCUL)) \
+	$(addprefix src/linear/, $(SRCS_LINEAR)) \
 	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
 LIBFT_DIR = libft
