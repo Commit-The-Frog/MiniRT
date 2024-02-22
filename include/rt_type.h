@@ -56,6 +56,8 @@ typedef struct s_dimension
 {
 	t_coord		*cam_coord;		// essential
 	t_vector	*cam_vector;	// essential
+	t_vector	*cam_x_vec;
+	t_vector	*cam_y_vec;
 	double		cam_fov;		// essential
 	t_light		*ambient;		// essential
 	t_list		*light_list;
