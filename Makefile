@@ -10,7 +10,9 @@ SRCS_PARSE =	parse.c \
 SRCS_CALCUL =	cal_main.c \
 				cal_util.c
 
-SRCS_LINEAR =	product.c
+SRCS_LINEAR =	product.c \
+				multiplier.c \
+				normalize.c
 
 SRCS_ETC = \
 
