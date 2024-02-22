@@ -10,6 +10,7 @@
 # include "rt_type.h"
 # include "parse.h"
 # include "calculate.h"
+# include "linear.h"
 
 # define X_WIN_SIZE 1920
 # define Y_WIN_SIZE 1080
