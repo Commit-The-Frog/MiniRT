@@ -68,18 +68,18 @@ t_coord	*conv_to_coord(char *str)
 	return (coord);
 }
 
-t_vector	*conv_to_vector(char *str)
+t_vec	*conv_to_vec(char *str)
 {
-	t_vector *vector;
+	t_vec *vec;
 	char	**list;
 
 	list = ft_split(str, ',');
-	vector = (t_vector *)ft_calloc(1, sizeof(t_vector));
-	if (list == NULL || vector == NULL)
+	vec = (t_vec *)ft_calloc(1, sizeof(t_vec));
+	if (list == NULL || vec == NULL)
 		error_handler("allocation error");
-	vector->x = conv_to_double(list[0]);
-	vector->y = conv_to_double(list[1]);
-	vector->z = conv_to_double(list[2]);
+	vec->x = conv_to_double(list[0]);
+	vec->y = conv_to_double(list[1]);
+	vec->z = conv_to_double(list[2]);
 	free_double_char_list(list);
-	return (vector);
+	return (vec);
 }

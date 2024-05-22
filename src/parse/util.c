@@ -7,7 +7,7 @@ void	error_handler(char *msg)
 	exit(1);
 }
 
-void	file_controler(t_info *info)
+void	file_controller(t_info *info)
 {
 	if (info->argc != 2)
 		error_handler("argument error");
@@ -34,7 +34,7 @@ int	get_list_len(char **list)
 	return (i);
 }
 
-void	print_dimension(t_dimension *dimension)
+void	print_dim(t_dim *dim)
 {
 	t_list	*cur;
 	t_light	*light;
@@ -42,14 +42,14 @@ void	print_dimension(t_dimension *dimension)
 
 	printf("-------------------------------------\n");
 	printf("<AMBIENT LIGHT>\n");
-	printf("type : %u\nbright_ratio: %lf\n", dimension->ambient->type, dimension->ambient->bright_ratio);
-	printf("color: [%d,%d,%d]\n", dimension->ambient->color->r, dimension->ambient->color->g, dimension->ambient->color->b);
+	printf("type : %u\nratio: %lf\n", dim->amb->type, dim->amb->ratio);
+	printf("color: [%d,%d,%d]\n", dim->amb->color->r, dim->amb->color->g, dim->amb->color->b);
 	printf("-------------------------------------\n");
 	printf("<CAMERA>\n");
-	printf("cam_coord : [%lf,%lf,%lf]\n", dimension->cam_coord->x, dimension->cam_coord->y, dimension->cam_coord->z);
-	printf("cam_vector : [%lf,%lf,%lf]\n", dimension->cam_vector->x, dimension->cam_vector->y, dimension->cam_vector->z);
-	printf("cam_fov : %lf\n", dimension->cam_fov);
-	cur = dimension->light_list;
+	printf("cam_coord : [%lf,%lf,%lf]\n", dim->cam_coord->x, dim->cam_coord->y, dim->cam_coord->z);
+	printf("cam_dir : [%lf,%lf,%lf]\n", dim->cam_dir->x, dim->cam_dir->y, dim->cam_dir->z);
+	printf("fov : %lf\n", dim->fov);
+	cur = dim->llist;
 	while (cur)
 	{
 		light = (t_light *)cur->content;
@@ -57,11 +57,11 @@ void	print_dimension(t_dimension *dimension)
 		printf("<LIGHT>\n");
 		printf("light_type: %d\n", light->type);
 		printf("light_coord : [%lf,%lf,%lf]\n", light->coord->x, light->coord->y, light->coord->z);
-		printf("light_bright_ratio: %lf\n", light->bright_ratio);
+		printf("light_ratio: %lf\n", light->ratio);
 		printf("light_color: [%d,%d,%d]\n", light->color->r, light->color->g, light->color->b);
 		cur = cur->next;
 	}
-	cur = dimension->obj_list;
+	cur = dim->olist;
 	while (cur)
 	{
 		obj = (t_obj *)cur->content;
