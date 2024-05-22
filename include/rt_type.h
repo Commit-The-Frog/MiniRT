@@ -5,12 +5,12 @@
 
 typedef enum e_type
 {
-	AMBIENT_LIGHT,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER
+	AMB,
+	CAM,
+	L,
+	SP,
+	PL,
+	CY
 }	t_type;
 
 typedef struct s_coord
@@ -20,12 +20,12 @@ typedef struct s_coord
 	double	z;
 }	t_coord;
 
-typedef struct s_vector
+typedef struct s_vec
 {
 	double	x;
 	double	y;
 	double	z;
-}	t_vector;
+}	t_vec;
 
 typedef struct s_color
 {
@@ -38,7 +38,7 @@ typedef struct s_obj
 {
 	t_type		type;
 	t_coord		*coord;
-	t_vector	*vec;
+	t_vec		*vec;
 	double		dia;
 	double		height;
 	t_color		*color;
@@ -48,22 +48,22 @@ typedef struct s_light
 {
 	t_type	type;
 	t_coord	*coord;
-	double	bright_ratio;
+	double	ratio;
 	t_color	*color;
 }	t_light;
 
-typedef struct s_dimension
+typedef struct s_dim
 {
-	t_coord		*cam_coord;		// essential
-	t_vector	*cam_vector;	// essential
-	t_vector	*cam_x_vec;
-	t_vector	*cam_y_vec;
-	t_vector	*cam_z_vec;
-	double		cam_fov;		// essential
-	t_light		*ambient;		// essential
-	t_list		*light_list;
-	t_list		*obj_list;
-}	t_dimension;
+	t_coord		*cam_coord;		// camera coordinate
+	t_vec		*cam_dir;	// camera direction
+	t_vec		*cam_xv;
+	t_vec		*cam_yv;
+	t_vec		*cam_zv;
+	double		fov;		// fov
+	t_light		*amb;		// ambient light
+	t_list		*llist;		// light list
+	t_list		*olist;		// object list
+}	t_dim;
 
 typedef struct s_info
 {

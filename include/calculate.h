@@ -3,10 +3,10 @@
 
 # include "minirt.h"
 
-void	cal_main(t_dimension *dimension);
+void	cal_main(t_dim *dim);
 
-void	cross_product(t_vector *v1, t_vector *v2, t_vector *res);
-double	dot_product(t_vector *v1, t_vector *v2);
-void	vector_print(t_vector v);
+void	cross_product(t_vec *v1, t_vec *v2, t_vec *res);
+double	dot_product(t_vec *v1, t_vec *v2);
+void	vector_print(t_vec v);
 void	matrix_print_4(double matrix[][4]);
 #endif
