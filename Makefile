@@ -7,11 +7,11 @@ SRCS_PARSE =	parse.c \
 				object.c \
 				convert.c
 
-SRCS_CALCUL =	cal_main.c \
+SRCS_CALCUL =	init_dim.c \
 				cal_util.c
 
 SRCS_LINEAR =	product.c \
-				multiplier.c \
+				vector.c \
 				normalize.c
 
 SRCS_ETC = \

@@ -54,7 +54,7 @@ typedef struct s_light
 
 typedef struct s_dim
 {
-	t_coord		*cam_coord;		// camera coordinate
+	t_coord		*cam_coord;	// camera coordinate
 	t_vec		*cam_dir;	// camera direction
 	t_vec		*cam_xv;
 	t_vec		*cam_yv;

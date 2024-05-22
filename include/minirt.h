@@ -12,7 +12,7 @@
 # include "calculate.h"
 # include "linear.h"
 
-# define X_WIN_SIZE 1920
-# define Y_WIN_SIZE 1080
+# define WIN_WIDTH 8
+# define WIN_HEIGHT 6
 
 #endif

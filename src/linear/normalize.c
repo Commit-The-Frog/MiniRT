@@ -6,13 +6,13 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:52:25 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/22 16:21:47 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/22 19:57:33 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linear.h"
 
-void	normalize(t_vec *vec)
+void	norm(t_vec *vec)
 {
 	double	size;
 
