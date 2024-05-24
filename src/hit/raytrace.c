@@ -6,14 +6,15 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 17:18:12 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:31:03 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "hit.h"
 
-unsigned long	get_color(t_hit *hit, t_list *llist, t_light *amb)
+unsigned long	get_color(t_vec *ray, t_hit *hit, t_list *llist, t_light *amb)
 {
+	(void)ray;
 	(void)llist;
 	(void)amb;
 	if (hit->hitted)
@@ -60,5 +61,5 @@ unsigned long	raytrace(t_vec *ray, t_dim *dim)
 	t_hit hit;
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim->cam_coord, dim->olist, &hit);
-	return (get_color(&hit, dim->llist, dim->amb));
+	return (get_color(ray, &hit, dim->llist, dim->amb));
 }
