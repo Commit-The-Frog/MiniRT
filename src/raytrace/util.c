@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:52:17 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/22 22:01:18 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:22:16 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,14 @@ double coord_dist(const t_coord c1, const t_coord c2)
 	return (sqrt(x + y + z));
 }
 
-t_vec	coord_to_vec(t_coord c, t_vec vec)
+t_vec	coord_to_vec(t_coord c)
 {
+	t_vec	vec;
+
 	vec.x = c.x;
 	vec.y = c.y;
 	vec.z = c.z;
 	return (vec);
-}
-
-t_vec	vsub(t_vec v1, t_vec v2)
-{
-	v1.x -= v2.x;
-	v1.y -= v2.y;
-	v1.z -= v2.z;
-	return (v1);
-}
-
-double	vdot(t_vec v1, t_vec v2)
-{
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
 double vlen(t_vec v)

@@ -6,14 +6,14 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:39:12 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/22 22:38:29 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:17:35 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 // convert coordinate(x,y,z) to t_vec
-void	coord_to_vec(double x, double y, double z, t_vec *vec)
+void	init_vec(double x, double y, double z, t_vec *vec)
 {
 	vec->x = x;
 	vec->y = y;

@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:02:39 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 14:51:37 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:33:48 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	shoot_ray(t_dim *dim, t_info *info)
 	int 	j;
 	t_vec	origin;
 	t_vec	ray;
-	t_color	color = {300, 0, 0};
+	unsigned long	color;
 
 	gx = tan(dim->fov / 2);
 	gy = gx * WIN_WIDTH / WIN_HEIGHT;
@@ -39,8 +39,8 @@ void	shoot_ray(t_dim *dim, t_info *info)
 			copy_vec(&ray, vsum(vsum(origin, vsmul(dx, j)), vsmul(dy, i)));
 			norm(&ray);
 			// vector_print(ray);
-			// color = raytrace();
-			my_mlx_pixel_put(&info->img, j, i, rgb_to_hex(&color));
+			color = raytrace(&ray, dim);
+			my_mlx_pixel_put(&info->img, j, i, color);
 			j++;
 		}
 		i++;
@@ -52,7 +52,7 @@ void	get_cam_dir(t_dim *dim)
 {
 	t_vec	wz;
 
-	coord_to_vec(0, 0, 1, &wz);
+	init_vec(0, 0, 1, &wz);
 	dim->cam_xv = malloc(sizeof(t_vec));
 	if (!dim->cam_xv)
 		error_handler("allocation error");
@@ -65,8 +65,8 @@ void	get_cam_dir(t_dim *dim)
 	copy_vec(dim->cam_zv, *dim->cam_dir);
 	if (comp_vec(wz, *(dim->cam_dir)))
 	{
-		coord_to_vec(1, 0, 0, dim->cam_xv);
-		coord_to_vec(0, 1, 0, dim->cam_yv);
+		init_vec(1, 0, 0, dim->cam_xv);
+		init_vec(0, 1, 0, dim->cam_yv);
 		return ;
 	}
 	norm(dim->cam_zv);

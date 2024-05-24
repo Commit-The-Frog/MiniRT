@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 14:45:07 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:34:17 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "raytrace.h"
 
-t_color	*get_color(t_hit *hit, t_light *light, t_light *amb, t_color *res)
+unsigned long	get_color(t_hit *hit, t_list *llist, t_light *amb)
 {
+	(void)llist;
+	(void)amb;
 	if (hit->hitted)
 	{
-		*res = hit->obj_color;
-		return (&hit->obj_color);
+		return (rgb_to_hex(&hit->obj_color));
 	}
 	else
-		return (NULL);
+		return (0x00);
 }
 
 t_hit	hit_obj(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
@@ -54,10 +55,10 @@ t_hit	hit_obj_iter(t_vec *ray, t_coord *cam, t_list *olist, t_hit *hit)
 	return (*hit);
 }
 
-t_color	*raytrace(t_vec *ray, t_dim *dim, t_color *res)
+unsigned long	raytrace(t_vec *ray, t_dim *dim)
 {
 	t_hit hit;
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim->cam_coord, dim->olist, &hit);
-	return (get_color(&hit, dim->llist, dim->amb, res));
+	return (get_color(&hit, dim->llist, dim->amb));
 }

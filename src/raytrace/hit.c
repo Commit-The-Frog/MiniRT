@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 14:37:47 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:27:18 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_hit hit_sp(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 	double	b;
 	double	c;
 
-	centerv = coord_to_vec(*(obj->coord), centerv);
-	camv = coord_to_vec(*cam, camv);
+	centerv = coord_to_vec(*(obj->coord));
+	camv = coord_to_vec(*cam);
 	b = vdot(*ray, vsub(camv, centerv));
 	c = vlensq(vsub(camv, centerv)) - pow(obj->dia / 2, 2);
 	hit->t = pow(b, 2) - c * vlensq(*ray);
@@ -40,11 +40,11 @@ t_hit hit_pl(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 	t_vec	pl_dotv;
 	t_vec	camv;
 
-	pl_dotv = coord_to_vec(*(obj->coord), pl_dotv);
-	camv = coord_to_vec(*cam, camv);
+	pl_dotv = coord_to_vec(*(obj->coord));
+	camv = coord_to_vec(*cam);
 	hit->hitted = 0;
-	normalize(obj->vec);
-	normalize(ray);
+	norm(obj->vec);
+	norm(ray);
 	hit->t = vdot(vsub(pl_dotv, camv), *(obj->vec)) / \
 	vdot(*ray, *(obj->vec));
 	if (hit->t < 1e-6)
@@ -55,8 +55,8 @@ t_hit hit_pl(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 	return (*hit);
 }
 
-t_hit hit_cy(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
-{
-	hit->hitted = 0;
-	return (*hit);
-}
+// t_hit hit_cy(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
+// {
+// 	hit->hitted = 0;
+// 	return (*hit);
+// }
