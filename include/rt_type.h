@@ -3,6 +3,14 @@
 
 # include "libft.h"
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
 typedef enum e_type
 {
 	AMB,
@@ -70,6 +78,9 @@ typedef struct s_info
 	int		argc;
 	char	**argv;
 	int		fd;
+	void	*mlx;
+	void	*mlx_win;
+	t_data	img;
 }	t_info;
 
 #endif
