@@ -17,7 +17,8 @@ SRCS_LINEAR =	product.c \
 SRCS_RENDER =	render.c
 
 SRCS_HIT 	=	hit.c \
-				raytrace.c
+				raytrace.c \
+				util.c
 
 SRCS_GNL =	get_next_line.c \
 			get_next_line_utils.c

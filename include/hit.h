@@ -12,4 +12,9 @@ unsigned long	raytrace(t_vec *ray, t_dim *dim);
 
 // unsigned long	get_color(t_vec *ray, t_hit *hit, t_list *llist, t_light *amb);
 
+double	evendet(double a, double b, double c);
+double	solve_pos(double a, double b, double c);
+double	solve_neg(double a, double b, double c);
+t_coord	get_coord_by_t(t_vec *vec, double t, t_coord *coord);
+
 #endif
