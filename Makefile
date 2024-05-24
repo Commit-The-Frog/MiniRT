@@ -7,12 +7,14 @@ SRCS_PARSE =	parse.c \
 				object.c \
 				convert.c
 
-SRCS_CALCUL =	cal_main.c \
+SRCS_CALCUL =	init_dim.c \
 				cal_util.c
 
 SRCS_LINEAR =	product.c \
-				multiplier.c \
+				vector.c \
 				normalize.c
+
+SRCS_RENDER =	render.c
 
 SRCS_ETC = \
 
@@ -24,6 +26,7 @@ SRCS = \
 	$(addprefix src/parse/, $(SRCS_PARSE)) \
 	$(addprefix src/calculate/, $(SRCS_CALCUL)) \
 	$(addprefix src/linear/, $(SRCS_LINEAR)) \
+	$(addprefix src/render/, $(SRCS_RENDER)) \
 	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
 LIBFT_DIR = libft
@@ -47,10 +50,10 @@ $(LIBFT) :
 $(GNL_OBJS)
 
 $(NAME) : $(LIBFT) $(OBJS)
-	@$(CC) -o $(NAME) $(OBJS) -l$(LIBFT_NAME) -L$(LIBFT_DIR) -lreadline
+	@$(CC) -o $(NAME) $(OBJS) $(MLX) -l$(LIBFT_NAME) -L$(LIBFT_DIR) -lreadline
 
 %.o : %.c
-	@$(CC) -c $< -I$(LIBFT_DIR) -Iinclude -o $@
+	@$(CC) -c $< -Imlx -I$(LIBFT_DIR) -Iinclude -o $@
 
 clean :
 	@echo "MINIRT : make clean"
