@@ -13,7 +13,7 @@
 # include "calculate.h"
 # include "linear.h"
 # include "render.h"
-# include "raytrace.h"
+# include "hit.h"
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600

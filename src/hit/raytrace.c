@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 15:34:17 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 17:10:44 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "raytrace.h"
+# include "hit.h"
 
-unsigned long	get_color(t_hit *hit, t_list *llist, t_light *amb)
-{
-	(void)llist;
-	(void)amb;
-	if (hit->hitted)
-	{
-		return (rgb_to_hex(&hit->obj_color));
-	}
-	else
-		return (0x00);
-}
+// unsigned long	get_color(t_hit *hit, t_list *llist, t_light *amb)
+// {
+// 	(void)llist;
+// 	(void)amb;
+// 	if (hit->hitted)
+// 	{
+// 		return (rgb_to_hex(&hit->obj_color));
+// 	}
+// 	else
+// 		return (0x00);
+// }
 
 t_hit	hit_obj(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 {
