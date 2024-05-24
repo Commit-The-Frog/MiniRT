@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_dim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:02:39 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 15:33:48 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 16:15:58 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	shoot_ray(t_dim *dim, t_info *info)
 	unsigned long	color;
 
 	gx = tan(dim->fov / 2);
-	gy = gx * WIN_WIDTH / WIN_HEIGHT;
+	gy = gx * WIN_HEIGHT / WIN_WIDTH;
 	copy_vec(&origin, vsub(vsub(*dim->cam_zv, vsmul(*dim->cam_xv, gx)), vsmul(*dim->cam_yv, gy)));
 	copy_vec(&dx, vsmul(*dim->cam_xv, 2 * gx / (WIN_WIDTH - 1)));
 	copy_vec(&dy, vsmul(*dim->cam_yv, 2 * gy / (WIN_HEIGHT - 1)));
