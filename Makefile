@@ -16,10 +16,8 @@ SRCS_LINEAR =	product.c \
 
 SRCS_RENDER =	render.c
 
-SRCS_RT 	=	hit.c \
-				light.c \
-				raytrace.c \
-				util.c
+SRCS_HIT 	=	hit.c \
+				raytrace.c
 
 SRCS_GNL =	get_next_line.c \
 			get_next_line_utils.c
@@ -30,7 +28,7 @@ SRCS = \
 	$(addprefix src/calculate/, $(SRCS_CALCUL)) \
 	$(addprefix src/linear/, $(SRCS_LINEAR)) \
 	$(addprefix src/render/, $(SRCS_RENDER)) \
-	$(addprefix src/raytrace/, $(SRCS_RT)) \
+	$(addprefix src/hit/, $(SRCS_HIT)) \
 	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
 LIBFT_DIR = libft
