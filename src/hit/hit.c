@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 19:44:45 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:51:36 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ t_hit hit_pl(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 	else
 	{
 		hit->hitted = 1;
+		hit->point = get_coord_by_t(ray, hit->t, cam);
+		hit->vec = *(obj->vec);
+		norm(&(hit->vec));
+		if (vdot(hit->vec, *ray) > 0)
+		{
+			hit->vec.x *= -1;
+			hit->vec.y *= -1;
+			hit->vec.z *= -1;
+		}
 	}
 	hit->obj_color = *(obj->color);
 	return (*hit);
