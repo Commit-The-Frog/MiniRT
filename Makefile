@@ -12,13 +12,16 @@ SRCS_CALCUL =	init_dim.c \
 
 SRCS_LINEAR =	product.c \
 				vector.c \
-				normalize.c
+				color.c \
+				etc.c
 
 SRCS_RENDER =	render.c
 
 SRCS_HIT 	=	hit.c \
 				raytrace.c \
 				util.c
+
+SRCS_TRACE	=	phong.c
 
 SRCS_GNL =	get_next_line.c \
 			get_next_line_utils.c
@@ -30,6 +33,7 @@ SRCS = \
 	$(addprefix src/linear/, $(SRCS_LINEAR)) \
 	$(addprefix src/render/, $(SRCS_RENDER)) \
 	$(addprefix src/hit/, $(SRCS_HIT)) \
+	$(addprefix src/trace/, $(SRCS_TRACE)) \
 	$(addprefix src/, $(SRCS_EXEC)) \
 	$(SRCS_ETC)
 LIBFT_DIR = libft

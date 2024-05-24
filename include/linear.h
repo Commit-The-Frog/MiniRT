@@ -7,7 +7,7 @@
 t_vec	vcross(t_vec v1, t_vec v2);
 double	vdot(t_vec v1, t_vec v2);
 
-/* normalize.c */
+/* etc.c */
 void	norm(t_vec *vec);
 
 /* vector.c */
@@ -21,5 +21,9 @@ t_vec	vsmul(t_vec v1, double sc);
 t_vec	vsum(t_vec v1, t_vec v2);
 double	vsize(t_vec v);
 double	vsizesq(t_vec v);
+
+/* color.c */
+t_color	csum(t_color c1, t_color c2);
+t_color	csmul(t_color c1, double sc);
 
 #endif

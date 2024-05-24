@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 19:40:01 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:21:26 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ unsigned long	raytrace(t_vec *ray, t_dim *dim)
 	t_hit hit;
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim->cam_coord, dim->olist, &hit);
-	return (get_color(ray, &hit, dim->llist, dim->amb));
+	return (get_color(&hit, dim->llist, dim->amb));
 }
