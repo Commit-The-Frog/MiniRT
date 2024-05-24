@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:51:37 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 20:13:06 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 21:53:01 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	vector_print(t_vec v)
 
 void	color_print(t_color c)
 {
-	printf("[%d][%d][%d]\n", c.r, c.g, c.b);
+	printf("[%lf][%lf][%lf]\n", c.r, c.g, c.b);
 }
 
 void	matrix_print_4(double matrix[][4])

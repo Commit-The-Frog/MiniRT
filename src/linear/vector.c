@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:39:12 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/24 19:47:41 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 20:57:28 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ t_vec	vsum(t_vec v1, t_vec v2)
 	v1.x += v2.x;
 	v1.y += v2.y;
 	v1.z += v2.z;
+	return (v1);
+}
+
+// scalar sum of vector v1 + sc
+t_vec	vssum(t_vec v1, double sc)
+{
+	v1.x += sc;
+	v1.y += sc;
+	v1.z += sc;
 	return (v1);
 }
 
