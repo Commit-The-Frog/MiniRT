@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:52:17 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 15:22:16 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:57:34 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,18 @@ double vlensq(t_vec v)
 {
 	return (pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
 }
+
+// double solver_neg(double a, double b, double c)
+// {
+
+// }
+
+// double solver_pos(double a, double b, double c)
+// {
+
+// }
+
+// double det(double a, double b, double c)
+// {
+// 	return pow(b,2) - c * a;
+// }

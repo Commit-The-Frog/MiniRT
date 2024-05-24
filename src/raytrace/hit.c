@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 15:27:18 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/24 16:17:54 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ t_hit hit_sp(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 	t_vec	camv;
 	double	b;
 	double	c;
+	double	det;
 
 	centerv = coord_to_vec(*(obj->coord));
 	camv = coord_to_vec(*cam);
 	b = vdot(*ray, vsub(camv, centerv));
 	c = vlensq(vsub(camv, centerv)) - pow(obj->dia / 2, 2);
-	hit->t = pow(b, 2) - c * vlensq(*ray);
-	if (hit->t > 0)
-		hit->hitted = 1;
-	else
+	det = pow(b, 2) - c * vlensq(*ray);
+	if (det <= 1e-6)
 		hit->hitted = 0;
+	else
+	{
+		hit->hitted = 1;
+	} // hit->t 값도 추가해야됨.
 	hit->obj_color = *(obj->color);
 	return (*hit);
 }
