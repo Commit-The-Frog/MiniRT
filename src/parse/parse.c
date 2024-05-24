@@ -1,16 +1,16 @@
 #include "minirt.h"
 
-void	init_dimension(t_dimension *dimension)
+void	init_dim(t_dim *dim)
 {
-	dimension->cam_coord = NULL;
-	dimension->cam_vector = NULL;
-	dimension->cam_fov = 0;
-	dimension->ambient = NULL;
-	dimension->light_list = NULL;
-	dimension->obj_list = NULL;
+	dim->cam_coord = NULL;
+	dim->cam_dir = NULL;
+	dim->fov = 0;
+	dim->amb = NULL;
+	dim->llist = NULL;
+	dim->olist = NULL;
 }
 
-int	parse_line(t_dimension *dimension, char *line)
+int	parse_line(t_dim *dim, char *line)
 {
 	char	**list;
 
@@ -20,32 +20,32 @@ int	parse_line(t_dimension *dimension, char *line)
 	if (list == NULL)
 		error_handler("allocation error");
 	if (list[0] && !ft_strncmp(list[0], "A", 1) && ft_strlen(list[0]) == 1)
-		parse_type_A(dimension, list);
+		parse_type_A(dim, list);
 	else if (list[0] && !ft_strncmp(list[0], "C", 1) && ft_strlen(list[0]) == 1)
-		parse_type_C(dimension, list);
+		parse_type_C(dim, list);
 	else if (list[0] && !ft_strncmp(list[0], "L", 1) && ft_strlen(list[0]) == 1)
-		parse_type_L(dimension, list);
+		parse_type_L(dim, list);
 	else if (list[0] && !ft_strncmp(list[0], "sp", 1) && ft_strlen(list[0]) == 2)
-		parse_type_obj(dimension, list, SPHERE);
+		parse_type_obj(dim, list, SP);
 	else if (list[0] && !ft_strncmp(list[0], "pl", 1) && ft_strlen(list[0]) == 2)
-		parse_type_obj(dimension, list, PLANE);
+		parse_type_obj(dim, list, PL);
 	else if (list[0] && !ft_strncmp(list[0], "cy", 1) && ft_strlen(list[0]) == 2)
-		parse_type_obj(dimension, list, CYLINDER);
+		parse_type_obj(dim, list, CY);
 	free_double_char_list(list);
 	return (0);
 }
 
-void	parse(t_info *info, t_dimension *dimension)
+void	parse(t_info *info, t_dim *dim)
 {
 	char	*line;
 
-	file_controler(info);
-	init_dimension(dimension);
+	file_controller(info);
+	init_dim(dim);
 	line = "";
 	while (line)
 	{
 		line = get_next_line(info->fd);
-		parse_line(dimension, line);
+		parse_line(dim, line);
 	}
-	print_dimension(dimension);
+	// print_dim(dim);
 }

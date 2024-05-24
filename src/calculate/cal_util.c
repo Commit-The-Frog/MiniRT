@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cal_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:51:37 by minjacho          #+#    #+#             */
-/*   Updated: 2024/02/22 21:53:40 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/22 22:11:12 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	vector_print(t_vector v)
+void	coord_print(t_coord coord)
+{
+	printf("[%lf,%lf,%lf]\n", coord.x, coord.y, coord.z);
+}
+
+void	vector_print(t_vec v)
 {
 	printf("[%lf][%lf][%lf]\n", v.x, v.y, v.z);
 }
