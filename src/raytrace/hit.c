@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/22 22:08:44 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:40:01 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_hit hit_sp(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit)
 
 	centerv = coord_to_vec(*cam, centerv);
 	camv = coord_to_vec(*cam, camv);
-	b = vdot(*(obj->vec), vsub(camv, centerv));
+	b = vdot(*ray, vsub(camv, centerv));
 	c = vlensq(vsub(camv, centerv)) - pow(obj->dia / 2, 2);
 	if (pow(b, 2) - c > 0)
 		hit->hitted = 1;
