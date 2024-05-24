@@ -9,6 +9,7 @@ typedef struct s_hit
 	double	t; // p = e + td에서 t값
 	t_coord	point; // 접점
 	t_vec	vec; //법선 벡터
+	t_color	obj_color //물체의 색상
 }	t_hit;
 
 t_hit hit_sp(t_vec *ray, t_coord *cam, t_obj *obj, t_hit *hit);

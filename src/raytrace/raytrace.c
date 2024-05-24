@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/22 22:14:08 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:45:07 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 t_color	*get_color(t_hit *hit, t_light *light, t_light *amb, t_color *res)
 {
 	if (hit->hitted)
-		return (amb->color);
+	{
+		*res = hit->obj_color;
+		return (&hit->obj_color);
+	}
 	else
 		return (NULL);
 }
@@ -44,11 +47,8 @@ t_hit	hit_obj_iter(t_vec *ray, t_coord *cam, t_list *olist, t_hit *hit)
 	while (p)
 	{
 		new_hit = hit_obj(ray, cam, p->content, &new_hit);
-		if (hit->hitted == 0 && new_hit.hitted == 1)
-		{
-			hit->hitted = 1;
-			// 업데이트 이후에 추가 필요
-		}
+		if (new_hit.hitted && (hit->hitted == 0 || hit->t > new_hit.t))
+			*hit = new_hit;
 		p = p->next;
 	}
 	return (*hit);

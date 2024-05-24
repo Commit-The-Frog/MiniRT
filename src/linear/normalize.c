@@ -6,13 +6,13 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:52:25 by minjacho          #+#    #+#             */
-/*   Updated: 2024/02/22 21:13:40 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:23:56 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linear.h"
 
-void	normalize(t_vector *vec)
+void	normalize(t_vec *vec)
 {
 	double	size;
 
