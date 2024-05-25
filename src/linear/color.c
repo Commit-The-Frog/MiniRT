@@ -11,10 +11,12 @@ void	init_color(int r, int g, int b, t_color *color)
 // add two color c1 + c2 (max:255)
 t_color	csum(t_color c1, t_color c2)
 {
-	c1.r = min(c1.r + c2.r, 255);
-	c1.g = min(c1.g + c2.g, 255);
-	c1.b = min(c1.b + c2.b, 255);
-	return (c1);	
+	t_color	res;
+
+	res.r = min(c1.r + c2.r, 255);
+	res.g = min(c1.g + c2.g, 255);
+	res.b = min(c1.b + c2.b, 255);
+	return (res);
 }
 
 // multiply two color c1 * c2
