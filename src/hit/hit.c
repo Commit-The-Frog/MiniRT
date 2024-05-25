@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 17:19:44 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:05:54 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_hit hit_sp(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 		else
 			hit->hitted = 0;
 	}
-	return (hit_coord_cal_sp(ray, cam, obj, hit));
+	return (*hit);
 }
 
 // hit이 되었는지 확인하여서, t_hit의 t, hitted 설정
@@ -113,7 +113,6 @@ int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my)
 	{
 		res.bias = 0.00001;
 		res = hit_sp(&vec, start, obj, &res);
-		res = hit_coord_cal_sp(&vec, start, obj, &res);
 		if (res.hitted && (res.t > 0 && res.t < end_t))
 			return (1);
 	}
@@ -121,7 +120,6 @@ int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my)
 	{
 		res.bias = 0.00001;
 		res = hit_pl(&vec, start, obj, &res);
-		res = hit_coord_cal_pl(&vec, start, obj, &res);
 		if (res.hitted && (res.t > 0 && res.t < end_t))
 			return (1);
 	}
