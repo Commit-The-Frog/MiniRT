@@ -20,6 +20,8 @@ void	init_mlx(t_info *info)
 void	render_mlx(t_info info)
 {
 	mlx_put_image_to_window(info.mlx, info.mlx_win, info.img.img, 0, 0);
+	mlx_hook(info.mlx_win, 2, 0, &key, &info);
+	mlx_hook(info.mlx_win, 17, 0, &mlx_exit, &info);
 	mlx_loop(info.mlx);
 }
 
@@ -33,8 +35,7 @@ unsigned long	rgb_to_hex(t_color color)
 	r = (int)round(color.r);
 	g = (int)round(color.g);
 	b = (int)round(color.b);
-    
-    // 각 채널을 결합하여 16진수 unsigned long 값으로 변환
+
 	hex = (r << 16) | (g << 8) | b;
     return (hex);
 }
