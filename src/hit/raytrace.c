@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 14:44:58 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 14:10:40 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned long	get_color(t_vec *ray, t_hit *hit, t_list *llist, t_light *amb)
 	(void)amb;
 	if (hit->hitted)
 	{
-		return (rgb_to_hex(&hit->obj_color));
+		return (rgb_to_hex(hit->obj_color));
 	}
 	else
 		return (0x00);
@@ -67,7 +67,9 @@ t_hit	hit_obj_iter(t_vec *ray, t_coord *cam, t_list *olist, t_hit *hit)
 unsigned long	raytrace(t_vec *ray, t_dim *dim)
 {
 	t_hit hit;
+
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim->cam_coord, dim->olist, &hit);
-	return (get_color(ray, &hit, dim->llist, dim->amb));
+	return (phong(*ray, &hit, dim->llist, dim->amb));
+	// return (get_color(ray, &hit, dim->llist, dim->amb));
 }

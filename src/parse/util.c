@@ -43,7 +43,7 @@ void	print_dim(t_dim *dim)
 	printf("-------------------------------------\n");
 	printf("<AMBIENT LIGHT>\n");
 	printf("type : %u\nratio: %lf\n", dim->amb->type, dim->amb->ratio);
-	printf("color: [%d,%d,%d]\n", dim->amb->color->r, dim->amb->color->g, dim->amb->color->b);
+	printf("color: [%lf,%lf,%lf]\n", dim->amb->color->r, dim->amb->color->g, dim->amb->color->b);
 	printf("-------------------------------------\n");
 	printf("<CAMERA>\n");
 	printf("cam_coord : [%lf,%lf,%lf]\n", dim->cam_coord->x, dim->cam_coord->y, dim->cam_coord->z);
@@ -58,7 +58,7 @@ void	print_dim(t_dim *dim)
 		printf("light_type: %d\n", light->type);
 		printf("light_coord : [%lf,%lf,%lf]\n", light->coord->x, light->coord->y, light->coord->z);
 		printf("light_ratio: %lf\n", light->ratio);
-		printf("light_color: [%d,%d,%d]\n", light->color->r, light->color->g, light->color->b);
+		printf("light_color: [%lf,%lf,%lf]\n", light->color->r, light->color->g, light->color->b);
 		cur = cur->next;
 	}
 	cur = dim->olist;
@@ -73,7 +73,7 @@ void	print_dim(t_dim *dim)
 			printf("obj_vec : [%lf,%lf,%lf]\n", obj->vec->x, obj->vec->y, obj->vec->z);
 		printf("obj_dia: %lf\n", obj->dia);
 		printf("obj_height: %lf\n", obj->height);
-		printf("obj_color: [%d,%d,%d]\n", obj->color->r, obj->color->g, obj->color->b);
+		printf("obj_color: [%lf,%lf,%lf]\n", obj->color->r, obj->color->g, obj->color->b);
 		cur = cur->next;
 	}
 	printf("-------------------------------------\n");

@@ -23,9 +23,18 @@ void	render_mlx(t_info info)
 	mlx_loop(info.mlx);
 }
 
-unsigned long	rgb_to_hex(t_color *color)
+unsigned long	rgb_to_hex(t_color color)
 {
-	if (!color)
-		return (0x00);
-    return ((color->r & 0xff) << 16) + ((color->g & 0xff) << 8) + (color->b & 0xff);
+	unsigned long hex;
+    int r;
+    int g;
+    int b;
+	
+	r = (int)round(color.r);
+	g = (int)round(color.g);
+	b = (int)round(color.b);
+    
+    // 각 채널을 결합하여 16진수 unsigned long 값으로 변환
+	hex = (r << 16) | (g << 8) | b;
+    return (hex);
 }

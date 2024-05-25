@@ -25,11 +25,11 @@ int	parse_line(t_dim *dim, char *line)
 		parse_type_C(dim, list);
 	else if (list[0] && !ft_strncmp(list[0], "L", 1) && ft_strlen(list[0]) == 1)
 		parse_type_L(dim, list);
-	else if (list[0] && !ft_strncmp(list[0], "sp", 1) && ft_strlen(list[0]) == 2)
+	else if (list[0] && !ft_strncmp(list[0], "sp", 2) && ft_strlen(list[0]) == 2)
 		parse_type_obj(dim, list, SP);
-	else if (list[0] && !ft_strncmp(list[0], "pl", 1) && ft_strlen(list[0]) == 2)
+	else if (list[0] && !ft_strncmp(list[0], "pl", 2) && ft_strlen(list[0]) == 2)
 		parse_type_obj(dim, list, PL);
-	else if (list[0] && !ft_strncmp(list[0], "cy", 1) && ft_strlen(list[0]) == 2)
+	else if (list[0] && !ft_strncmp(list[0], "cy", 2) && ft_strlen(list[0]) == 2)
 		parse_type_obj(dim, list, CY);
 	free_double_char_list(list);
 	return (0);

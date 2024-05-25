@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:39:12 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/24 17:15:20 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:24:47 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ t_vec	vsum(t_vec v1, t_vec v2)
 	return (v1);
 }
 
+// scalar sum of vector v1 + sc
+t_vec	vssum(t_vec v1, double sc)
+{
+	v1.x += sc;
+	v1.y += sc;
+	v1.z += sc;
+	return (v1);
+}
+
 double coord_dist(const t_coord c1, const t_coord c2)
 {
 	double x;
@@ -94,4 +103,15 @@ double vsize(t_vec v)
 double vsizesq(t_vec v)
 {
 	return (pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
+}
+
+// make two coord to vector v = c2 - c1;
+t_vec	coord2_to_vec(t_coord c1, t_coord c2)
+{
+	t_vec	res;
+
+	res.x = c2.x - c1.x;
+	res.y = c2.y - c1.y;
+	res.z = c2.z - c1.z;
+	return (res);
 }
