@@ -97,16 +97,18 @@ unsigned long	phong(t_vec ray, t_hit *hit, t_dim *dim)
 		while (olist)
 		{
 			if (is_hitted(hit->point, *((t_light *)llist->content)->coord, \
-				(t_obj *)olist->content))
+				(t_obj *)olist->content, hit->my))
 			{
 				flag = 1;
 				break;
 			}
 			olist = olist->next;
 		}
-		res = csum(res, diffuse(*hit, *(t_light *)llist->content));
 		if (!flag)
+		{
+			res = csum(res, diffuse(*hit, *(t_light *)llist->content));
 			res = csum(res, specular(ray, *hit, *(t_light *)llist->content));
+		}
 		llist = llist->next;
 	}
 	return (rgb_to_hex(res));
