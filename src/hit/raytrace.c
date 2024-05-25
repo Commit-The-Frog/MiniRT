@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 16:26:43 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:15:40 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ t_hit	hit_obj(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
 		return (*hit);
 	}
-	else
-	{
+	else if (obj->type == CY)
+	{ // 현재 raytrace를 위한 법선벡터 이상함. 가래떡나옴.
+		hit->bias = 0;
+		*hit = hit_cy(ray, cam, obj, hit);
 		return (*hit);
 	}
+	return (*hit);
 }
 
 //ray가 obj배열들을 체크하여 부딪히는 점이 있는지 확인.
