@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 15:28:15 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/25 16:26:43 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ t_hit	hit_obj(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 {
 	if (obj->type == SP)
 	{
+		hit->bias = 0;
 		*hit = hit_sp(ray, cam, obj, hit);
 		*hit = hit_coord_cal_sp(ray, cam, obj, hit);
 		return (*hit);
 	}
 	else if (obj->type == PL)
 	{
+		hit->bias = 0;
 		*hit = hit_pl(ray, cam, obj, hit);
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
 		return (*hit);

@@ -90,6 +90,7 @@ typedef struct s_hit
 	t_coord	point; // 접점
 	t_vec	vec; //법선 벡터
 	t_color	obj_color; //물체의 색상
+	double	bias; // 오차범위
 }	t_hit;
 
 #endif
