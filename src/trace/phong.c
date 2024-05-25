@@ -76,21 +76,37 @@ t_color	ambient(t_color obj_color, t_light *amb)
 // trace ray from object to light
 // calculate amount of light to ratio(0-1),
 // returns color value (unsigned int)
-unsigned long	phong(t_vec ray, t_hit *hit, t_list *llist, t_light *amb)
+unsigned long	phong(t_vec ray, t_hit *hit, t_dim *dim)
 {
 	t_color	res;
+	t_list	*llist;
+	t_list	*olist;
+	int		flag;
 
-	(void)ray;
 	if (!hit->hitted)
 		return (0x00);
+	llist = dim->llist;
+	olist = dim->olist;
 	init_color(0, 0, 0, &res);
 	// ambient
-	res = csum(res, ambient(hit->obj_color, amb));
+	res = csum(res, ambient(hit->obj_color, dim->amb));
 	// diffuse
 	while (llist)
 	{
+		flag = 0;
+		while (olist)
+		{
+			if (is_hitted(hit->point, *((t_light *)llist->content)->coord, \
+				(t_obj *)olist->content))
+			{
+				flag = 1;
+				break;
+			}
+			olist = olist->next;
+		}
 		res = csum(res, diffuse(*hit, *(t_light *)llist->content));
-		res = csum(res, specular(ray, *hit, *(t_light *)llist->content));
+		if (!flag)
+			res = csum(res, specular(ray, *hit, *(t_light *)llist->content));
 		llist = llist->next;
 	}
 	return (rgb_to_hex(res));
