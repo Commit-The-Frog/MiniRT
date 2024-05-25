@@ -23,7 +23,7 @@ t_color	specular(t_vec ray, t_hit hit, t_light light)
 	// 정반사 벡터 r 구하기 (r = l + 2 * (-l * n) * n)
 	r = vsum(l, vsmul(n, vdot(vsmul(l, -1), n) * 2));
 	// 각도에 따른 빛의 양 구하기 : 0~1
-	angle = pow(vdot(r, vsmul(ray, -1)), 3);
+	angle = pow(max(vdot(r, vsmul(ray, -1)), 0), 3);
 	// 광원의 색비율 구하기
 	light_color = csdiv(*light.color, 255);
 	// 색상 구하기 : (물체색) * (광원색비율) * (광원밝기) * (각도밝기)
@@ -58,7 +58,7 @@ t_color	diffuse(t_hit hit, t_light light)
 	res = csmul(csmul(cmul(hit.obj_color, light_color), light.ratio), angle);
 	return (res);
 }
- 
+
 
 // Ambient
 // (기존 색) * (amb 색) / 255 * (amb ratio)

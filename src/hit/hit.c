@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 14:47:33 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:48:46 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_hit hit_sp(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 	centerv = coord_to_vec(*(obj->coord));
 	camv = coord_to_vec(cam);
 	res = solve_with_det(vsizesq(*ray), vdot(*ray, vsub(camv, centerv)), \
-		vsizesq(vsub(camv, centerv)) - pow(obj->dia / 2, 2));
+		vsizesq(vsub(camv, centerv)) - pow(obj->dia / 2 + hit->bias, 2));
 	if (res.det <= 1e-6)
 		hit->hitted = 0;
 	else
@@ -91,6 +91,8 @@ t_hit hit_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 // 	return (*hit);
 // }
 
+// 두
+
 //두 점이 주어졌을때, obj와 부딪히는 부분이 두 점 사이에 있는지 확인한다.
 int	is_hitted(t_coord start, t_coord end, t_obj *obj)
 {
@@ -103,13 +105,17 @@ int	is_hitted(t_coord start, t_coord end, t_obj *obj)
 	end_t = get_t_by_coord(vec, start, end);
 	if (obj->type == SP)
 	{
+		res.bias = 0.00001;
 		res = hit_sp(&vec, start, obj, &res);
+		res = hit_coord_cal_sp(&vec, start, obj, &res);
 		if (res.hitted && (res.t > 0 && res.t < end_t))
 			return (1);
 	}
 	else if (obj->type == PL)
 	{
+		res.bias = 0.00001;
 		res = hit_pl(&vec, start, obj, &res);
+		res = hit_coord_cal_pl(&vec, start, obj, &res);
 		if (res.hitted && (res.t > 0 && res.t < end_t))
 			return (1);
 	}
