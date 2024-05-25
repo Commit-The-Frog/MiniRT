@@ -15,7 +15,8 @@ SRCS_LINEAR =	product.c \
 				color.c \
 				etc.c
 
-SRCS_RENDER =	render.c
+SRCS_RENDER =	render.c \
+				hook.c
 
 SRCS_HIT 	=	hit.c \
 				raytrace.c \
