@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:39:12 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/24 20:57:28 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/25 11:24:47 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,15 @@ double vsize(t_vec v)
 double vsizesq(t_vec v)
 {
 	return (pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
+}
+
+// make two coord to vector v = c2 - c1;
+t_vec	coord2_to_vec(t_coord c1, t_coord c2)
+{
+	t_vec	res;
+
+	res.x = c2.x - c1.x;
+	res.y = c2.y - c1.y;
+	res.z = c2.z - c1.z;
+	return (res);
 }

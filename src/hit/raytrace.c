@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/24 21:09:53 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/25 14:10:40 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ unsigned long	raytrace(t_vec *ray, t_dim *dim)
 
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim->cam_coord, dim->olist, &hit);
-	return (phong(&hit, dim->llist, dim->amb));
+	return (phong(*ray, &hit, dim->llist, dim->amb));
 	// return (get_color(ray, &hit, dim->llist, dim->amb));
 }

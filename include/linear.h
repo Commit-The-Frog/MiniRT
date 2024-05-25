@@ -10,6 +10,7 @@ double	vdot(t_vec v1, t_vec v2);
 /* etc.c */
 double	min(double v1, double v2);
 void	norm(t_vec *vec);
+double	max(double v1, double v2);
 
 /* vector.c */
 t_vec	coord_to_vec(t_coord c);
@@ -23,6 +24,7 @@ t_vec	vsum(t_vec v1, t_vec v2);
 double	vsize(t_vec v);
 double	vsizesq(t_vec v);
 t_vec	vssum(t_vec v1, double sc);
+t_vec	coord2_to_vec(t_coord c1, t_coord c2);
 
 /* color.c */
 void	init_color(int r, int g, int b, t_color *color);
