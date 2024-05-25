@@ -91,6 +91,7 @@ typedef struct s_hit
 	t_vec	vec; //법선 벡터
 	t_color	obj_color; //물체의 색상
 	double	bias; // 오차범위
+	t_obj	*my; // 부딪힌 오브젝트
 }	t_hit;
 
 #endif

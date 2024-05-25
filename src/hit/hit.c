@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 16:48:46 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:19:44 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_hit hit_sp(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 	else
 	{
 		hit->hitted = 1;
+		hit->my = obj;
 		if (res.neg_x > 0)
 			hit->t = res.neg_x;
 		else if (res.pos_x > 0)
@@ -81,7 +82,10 @@ t_hit hit_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 	if (hit->t < 1e-6)
 		hit->hitted = 0;
 	else
+	{
 		hit->hitted = 1;
+		hit->my = obj;
+	}
 	return (*hit);
 }
 
@@ -94,12 +98,14 @@ t_hit hit_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 // 두
 
 //두 점이 주어졌을때, obj와 부딪히는 부분이 두 점 사이에 있는지 확인한다.
-int	is_hitted(t_coord start, t_coord end, t_obj *obj)
+int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my)
 {
 	t_hit	res;
 	t_vec	vec;
 	double	end_t;
 
+	if (obj == my)
+		return (0);
 	vec = vsub(coord_to_vec(end), coord_to_vec(start));
 	norm(&vec);
 	end_t = get_t_by_coord(vec, start, end);
