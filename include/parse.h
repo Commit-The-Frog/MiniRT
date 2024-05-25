@@ -6,6 +6,7 @@
 //	parse.c
 void		parse(t_info *info, t_dim *dim);
 //	util.c
+int			check_extension(char *filename);
 void		error_handler(char *msg);
 void		file_controller(t_info *info);
 void		free_double_char_list(char **list);

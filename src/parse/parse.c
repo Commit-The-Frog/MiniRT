@@ -47,5 +47,5 @@ void	parse(t_info *info, t_dim *dim)
 		line = get_next_line(info->fd);
 		parse_line(dim, line);
 	}
-	// print_dim(dim);
+	print_dim(dim);
 }
