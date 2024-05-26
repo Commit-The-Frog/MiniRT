@@ -20,7 +20,10 @@ SRCS_RENDER =	render.c \
 
 SRCS_HIT 	=	hit.c \
 				raytrace.c \
-				util.c
+				util.c \
+				solve.c \
+				hit_cy.c \
+				hit_shadow.c
 
 SRCS_TRACE	=	phong.c
 

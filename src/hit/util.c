@@ -3,52 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:36:59 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 17:47:55 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/26 19:00:37 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hit.h"
-
-t_solve	solve_with_det(double a, double b, double c)
-{
-	t_solve	res;
-
-	res.det = evendet(a, b, c);
-	if (res.det > 0)
-	{
-		res.neg_x = solve_neg(a, b, c);
-		res.pos_x = solve_pos(a, b, c);
-	}
-	return (res);
-}
-
-double	evendet(double a, double b, double c)
-{
-	return (pow(b,2) - c * a);
-}
-
-double	solve_pos(double a, double b, double c)
-{
-	double	upper;
-	double	lower;
-
-	upper = - b + sqrt(pow(b, 2) - a * c);
-	lower = a;
-	return (upper/lower);
-}
-
-double	solve_neg(double a, double b, double c)
-{
-	double	upper;
-	double	lower;
-
-	upper = - b - sqrt(pow(b, 2) - a * c);
-	lower = a;
-	return (upper/lower);
-}
 
 t_coord	get_coord_by_t(t_vec vec, double t, t_coord coord)
 {
@@ -64,7 +26,7 @@ t_coord	get_coord_by_t(t_vec vec, double t, t_coord coord)
 
 double	get_t_by_coord(t_vec vec, t_coord start, t_coord coord)
 {
-	return (coord.x - start.x) / vec.x;
+	return ((coord.x - start.x) / vec.x);
 }
 
 // 매개변수 값은 변하지 않는다.
