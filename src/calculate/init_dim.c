@@ -24,9 +24,7 @@ void	shoot_ray(t_dim *dim, t_info *info)
 	t_vec	ray;
 	unsigned long	color;
 
-	printf("fov: %lf\n", dim->fov);
 	gx = tan(M_PI / 180 * dim->fov / 2);
-	printf("fuck!!!!!!!!!!!!!!!!%lf\n", gx);
 	gy = gx * WIN_HEIGHT / WIN_WIDTH;
 	copy_vec(&origin, vsub(vsub(*dim->cam_zv, vsmul(*dim->cam_xv, gx)), vsmul(*dim->cam_yv, gy)));
 	copy_vec(&dx, vsmul(*dim->cam_xv, 2 * gx / (WIN_WIDTH - 1)));
