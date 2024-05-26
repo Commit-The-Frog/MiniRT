@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:36:59 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 14:42:28 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/26 17:47:55 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ double	solve_neg(double a, double b, double c)
 	return (upper/lower);
 }
 
-t_coord	get_coord_by_t(t_vec *vec, double t, t_coord coord)
+t_coord	get_coord_by_t(t_vec vec, double t, t_coord coord)
 {
 	t_vec	coord_vec;
 	t_coord	res_c;
 
-	coord_vec = vsmul(*vec, t);
+	coord_vec = vsmul(vec, t);
 	res_c.x = coord_vec.x + coord.x;
 	res_c.y = coord_vec.y + coord.y;
 	res_c.z = coord_vec.z + coord.z;

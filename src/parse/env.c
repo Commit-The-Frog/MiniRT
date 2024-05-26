@@ -2,18 +2,11 @@
 
 void	parse_type_A(t_dim *dim, char **list)
 {
-	t_light	*amb;
-
 	if (get_list_len(list) != 3)
 		error_handler("syntax error : <Amb light>");
-	amb = (t_light *)ft_calloc(1, sizeof(t_light));
-	if (amb == NULL)
-		error_handler("allocation error");
-	amb->type = AMB;
-	amb->coord = NULL;
-	amb->ratio = conv_to_double(list[1]);
-	amb->color = conv_to_color(list[2]);
-	dim->amb = amb;
+	dim->amb.type = AMB;
+	dim->amb.ratio = conv_to_double(list[1]);
+	dim->amb.color = conv_to_color(list[2]);
 }
 
 void	parse_type_C(t_dim *dim, char **list)

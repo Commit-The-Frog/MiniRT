@@ -16,7 +16,7 @@ t_color	specular(t_vec ray, t_hit hit, t_light light)
 	// 법선벡터 n
 	n = hit.vec;
 	// 광원과 물체접점을 잇는 난반사 벡터 l 구하기
-	l = coord2_to_vec(*light.coord, hit.point);
+	l = coord2_to_vec(light.coord, hit.point);
 	// normalize
 	norm(&n);
 	norm(&l);
@@ -25,7 +25,7 @@ t_color	specular(t_vec ray, t_hit hit, t_light light)
 	// 각도에 따른 빛의 양 구하기 : 0~1
 	angle = pow(max(vdot(r, vsmul(ray, -1)), 0), 3);
 	// 광원의 색비율 구하기
-	light_color = csdiv(*light.color, 255);
+	light_color = csdiv(light.color, 255);
 	// 색상 구하기 : (물체색) * (광원색비율) * (광원밝기) * (각도밝기)
 	res = csmul(csmul(cmul(hit.obj_color, light_color), light.ratio), angle);
 	return (res);
@@ -46,14 +46,14 @@ t_color	diffuse(t_hit hit, t_light light)
 	// 법선벡터 n
 	n = hit.vec;
 	// 광원과 물체접점을 잇는 난반사 벡터 l 구하기
-	l = coord2_to_vec(hit.point, *light.coord);
+	l = coord2_to_vec(hit.point, light.coord);
 	// normalize
 	norm(&n);
 	norm(&l);
 	// n과 l의 내적 구하기 (빛의 각도에 따른 양 계산 : 0~1)
 	angle = max(vdot(n, l), 0);
 	// 광원의 색비율 구하기
-	light_color = csdiv(*light.color, 255);
+	light_color = csdiv(light.color, 255);
 	// 색상 구하기: (물체색) * (광원색비율) * (광원밝기) * (각도밝기)
 	res = csmul(csmul(cmul(hit.obj_color, light_color), light.ratio), angle);
 	return (res);
@@ -62,45 +62,43 @@ t_color	diffuse(t_hit hit, t_light light)
 
 // Ambient
 // (기존 색) * (amb 색) / 255 * (amb ratio)
-t_color	ambient(t_color obj_color, t_light *amb)
+t_color	ambient(t_color obj_color, t_light amb)
 {
 	t_color	res;
 
 	init_color(0, 0, 0, &res);
-	if (!amb)
-		return (res);
-	res = csum(res, cmul(csmul(csdiv(*amb->color, 255), amb->ratio), obj_color));
+	res = csum(res, cmul(csmul(csdiv(amb.color, 255), amb.ratio), obj_color));
 	return (res);
 }
 
 // trace ray from object to light
 // calculate amount of light to ratio(0-1),
 // returns color value (unsigned int)
-unsigned long	phong(t_vec ray, t_hit *hit, t_dim *dim)
+unsigned long	phong(t_vec ray, t_hit hit, t_dim dim)
 {
 	t_color	res;
 	t_list	*llist;
 	t_list	*olist;
 	int		flag;
 
-	if (!hit->hitted)
+	if (!hit.hitted)
 		return (0x00);
-	llist = dim->llist;
-	olist = dim->olist;
+	llist = dim.llist;
+	olist = dim.olist;
 	init_color(0, 0, 0, &res);
 	// ambient
-	res = csum(res, ambient(hit->obj_color, dim->amb));
+	res = csum(res, ambient(hit.obj_color, dim.amb));
 	// diffuse
 	while (llist)
 	{
 		flag = 0;
-		olist = dim->olist;
+		olist = dim.olist;
 		while (olist)
 		{
-			// if (is_hitted(hit->point, *((t_light *)llist->content)->coord, \
-				// (t_obj *)olist->content, hit->my))
-			if (is_hitted(*((t_light *)llist->content)->coord, hit->point, \
-				(t_obj *)olist->content, hit->my))
+			// if (is_hitted(hit.point, *((t_light *)llist->content)->coord, \
+				// (t_obj *)olist->content, hit.my))
+			if (is_hitted(((t_light *)llist->content)->coord, hit.point, \
+				(t_obj *)olist->content, hit.my))
 			{
 				flag = 1;
 				break;
@@ -109,8 +107,8 @@ unsigned long	phong(t_vec ray, t_hit *hit, t_dim *dim)
 		}
 		if (!flag)
 		{
-			res = csum(res, diffuse(*hit, *(t_light *)llist->content));
-			res = csum(res, specular(ray, *hit, *(t_light *)llist->content));
+			res = csum(res, diffuse(hit, *(t_light *)llist->content));
+			res = csum(res, specular(ray, hit, *(t_light *)llist->content));
 		}
 		llist = llist->next;
 	}

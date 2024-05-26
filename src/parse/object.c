@@ -1,14 +1,5 @@
 #include "minirt.h"
 
-void	init_obj(t_obj *obj)
-{
-	obj->coord = NULL;
-	obj->vec = NULL;
-	obj->dia = 0;
-	obj->height = 0;
-	obj->color = NULL;
-}
-
 void	parse_type_cy(t_dim *dim, char **list)
 {
 	t_obj	*obj;
@@ -18,7 +9,6 @@ void	parse_type_cy(t_dim *dim, char **list)
 	obj = (t_obj *)ft_calloc(1, sizeof(t_obj));
 	if (obj == NULL)
 		error_handler("allocation error");
-	init_obj(obj);
 	obj->type = CY;
 	obj->coord = conv_to_coord(list[1]);
 	obj->vec = conv_to_vec(list[2]);
@@ -37,7 +27,6 @@ void	parse_type_pl(t_dim *dim, char **list)
 	obj = (t_obj *)ft_calloc(1, sizeof(t_obj));
 	if (obj == NULL)
 		error_handler("allocation error");
-	init_obj(obj);
 	obj->type = PL;
 	obj->coord = conv_to_coord(list[1]);
 	obj->vec = conv_to_vec(list[2]);
@@ -54,7 +43,6 @@ void	parse_type_sp(t_dim *dim, char **list)
 	obj = (t_obj *)ft_calloc(1, sizeof(t_obj));
 	if (obj == NULL)
 		error_handler("allocation error");
-	init_obj(obj);
 	obj->type = SP;
 	obj->coord = conv_to_coord(list[1]);
 	obj->dia = conv_to_double(list[2]);

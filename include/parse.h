@@ -19,8 +19,8 @@ void		parse_type_L(t_dim *dim, char **list);
 void		parse_type_obj(t_dim *dim, char **list, t_type type);
 //	convert.c
 double		conv_to_double(char *str);
-t_color		*conv_to_color(char *str);
-t_coord		*conv_to_coord(char *str);
-t_vec		*conv_to_vec(char *str);
+t_color		conv_to_color(char *str);
+t_coord		conv_to_coord(char *str);
+t_vec		conv_to_vec(char *str);
 
 #endif

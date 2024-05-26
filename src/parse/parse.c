@@ -2,10 +2,7 @@
 
 void	init_dim(t_dim *dim)
 {
-	dim->cam_coord = NULL;
-	dim->cam_dir = NULL;
 	dim->fov = 0;
-	dim->amb = NULL;
 	dim->llist = NULL;
 	dim->olist = NULL;
 }

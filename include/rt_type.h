@@ -45,30 +45,30 @@ typedef struct s_color
 typedef struct s_obj
 {
 	t_type		type;
-	t_coord		*coord;
-	t_vec		*vec;
+	t_coord		coord;
+	t_vec		vec;
 	double		dia;
 	double		height;
-	t_color		*color;
+	t_color		color;
 }	t_obj;
 
 typedef struct s_light
 {
 	t_type	type;
-	t_coord	*coord;
+	t_coord	coord;
 	double	ratio;
-	t_color	*color;
+	t_color	color;
 }	t_light;
 
 typedef struct s_dim
 {
-	t_coord		*cam_coord;	// camera coordinate
-	t_vec		*cam_dir;	// camera direction
-	t_vec		*cam_xv;
-	t_vec		*cam_yv;
-	t_vec		*cam_zv;
+	t_coord		cam_coord;	// camera coordinate
+	t_vec		cam_dir;	// camera direction
+	t_vec		cam_xv;
+	t_vec		cam_yv;
+	t_vec		cam_zv;
 	double		fov;		// fov
-	t_light		*amb;		// ambient light
+	t_light		amb;		// ambient light
 	t_list		*llist;		// light list
 	t_list		*olist;		// object list
 }	t_dim;
