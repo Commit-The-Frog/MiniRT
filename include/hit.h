@@ -14,6 +14,8 @@ t_hit hit_sp(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
 t_hit hit_coord_cal_sp(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
 t_hit hit_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
 t_hit hit_coord_cal_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
+t_hit	hit_cy_pl_up(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
+t_hit	hit_cy_pl_down(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
 t_hit hit_cy(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit);
 int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my);
 
