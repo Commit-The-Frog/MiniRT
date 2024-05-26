@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 14:20:49 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/26 17:22:35 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,13 @@ int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my)
 	{
 		res.bias = 0.00001;
 		res = hit_pl(&vec, start, obj, &res);
+		if (res.hitted && (res.t > 0 && res.t < end_t))
+			return (1);
+	}
+	else if (obj->type == CY)
+	{
+		res.bias = 0.00001;
+		res = hit_cy(&vec, start, obj, &res);
 		if (res.hitted && (res.t > 0 && res.t < end_t))
 			return (1);
 	}
