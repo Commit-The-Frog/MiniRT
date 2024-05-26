@@ -4,6 +4,7 @@
 #include "minirt.h"
 
 //	parse.c
+void		exit_with_free(char **list, char *msg);
 void		parse(t_info *info, t_dim *dim);
 //	util.c
 int			check_extension(char *filename);
@@ -22,5 +23,11 @@ double		conv_to_double(char *str);
 t_color		conv_to_color(char *str);
 t_coord		conv_to_coord(char *str);
 t_vec		conv_to_vec(char *str);
+//	verify.c
+double		verify_ratio(char *str);
+t_color		verify_rgb(char *str);
+t_vec		verify_vector(char *str);
+double		verify_fov(char *str);
+double	verify_length(char *str);
 
 #endif
