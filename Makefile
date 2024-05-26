@@ -5,7 +5,8 @@ SRCS_PARSE =	parse.c \
 				util.c \
 				env.c \
 				object.c \
-				convert.c
+				convert.c \
+				verify.c
 
 SRCS_CALCUL =	init_dim.c \
 				cal_util.c

@@ -16,12 +16,12 @@ double	conv_to_double(char *str)
 		sign *= -1;
 		i++;
 	}
-	while (str[i] && (ft_isdigit(str[i]) || str[i] == '.'))
+	while (str[i] && str[i] != '\n' && (ft_isdigit(str[i]) || str[i] == '.'))
 	{
 		if (str[i] == '.')
 		{
 			i++;
-			while (str[i] && ft_isdigit(str[i]))
+			while (str[i] && str[i] != '\n' && ft_isdigit(str[i]))
 			{
 				result += (double)(str[i] - '0') / div;
 				div *= 10;
@@ -33,6 +33,8 @@ double	conv_to_double(char *str)
 		result += str[i] - '0';
 		i++;
 	}
+	if (str[i] != '\0' && str[i] != '\n')
+		error_handler("not a number");
 	return (result * sign);
 }
 
@@ -42,9 +44,9 @@ t_color	conv_to_color(char *str)
 	t_color	color;
 
 	list = ft_split(str, ',');
-	color.r = ft_atoi(list[0]);
-	color.g = ft_atoi(list[1]);
-	color.b = ft_atoi(list[2]);
+	color.r = conv_to_double(list[0]);
+	color.g = conv_to_double(list[1]);
+	color.b = conv_to_double(list[2]);
 	free_double_char_list(list);
 	return (color);
 }

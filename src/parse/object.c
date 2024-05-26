@@ -11,10 +11,10 @@ void	parse_type_cy(t_dim *dim, char **list)
 		error_handler("allocation error");
 	obj->type = CY;
 	obj->coord = conv_to_coord(list[1]);
-	obj->vec = conv_to_vec(list[2]);
-	obj->dia = conv_to_double(list[3]);
-	obj->height = conv_to_double(list[4]);
-	obj->color = conv_to_color(list[5]);
+	obj->vec = verify_vector(list[2]);
+	obj->dia = verify_length(list[3]);
+	obj->height = verify_length(list[4]);
+	obj->color = verify_rgb(list[5]);
 	ft_lstadd_back(&(dim->olist), ft_lstnew((void *)obj));
 }
 
@@ -29,8 +29,8 @@ void	parse_type_pl(t_dim *dim, char **list)
 		error_handler("allocation error");
 	obj->type = PL;
 	obj->coord = conv_to_coord(list[1]);
-	obj->vec = conv_to_vec(list[2]);
-	obj->color = conv_to_color(list[3]);
+	obj->vec = verify_vector(list[2]);
+	obj->color = verify_rgb(list[3]);
 	ft_lstadd_back(&(dim->olist), ft_lstnew((void *)obj));
 }
 
@@ -45,8 +45,8 @@ void	parse_type_sp(t_dim *dim, char **list)
 		error_handler("allocation error");
 	obj->type = SP;
 	obj->coord = conv_to_coord(list[1]);
-	obj->dia = conv_to_double(list[2]);
-	obj->color = conv_to_color(list[3]);
+	obj->dia = verify_length(list[2]);
+	obj->color = verify_rgb(list[3]);
 	ft_lstadd_back(&(dim->olist), ft_lstnew((void *)obj));
 }
 

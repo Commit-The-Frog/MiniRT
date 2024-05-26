@@ -71,6 +71,9 @@ typedef struct s_dim
 	t_light		amb;		// ambient light
 	t_list		*llist;		// light list
 	t_list		*olist;		// object list
+	int			count_a;
+	int			count_l;
+	int			count_c;
 }	t_dim;
 
 typedef struct s_info
@@ -85,13 +88,13 @@ typedef struct s_info
 
 typedef struct s_hit
 {
-	int		hitted; // hit 여부
-	double	t; // p = e + td에서 t값
-	t_coord	point; // 접점
-	t_vec	vec; //법선 벡터
-	t_color	obj_color; //물체의 색상
-	double	bias; // 오차범위
-	t_obj	*my; // 부딪힌 오브젝트
+	int		hitted; 		// hit 여부
+	double	t; 				// p = e + td에서 t값
+	t_coord	point; 			// 접점
+	t_vec	vec; 			// 법선 벡터
+	t_color	obj_color; 		// 물체의 색상
+	double	bias; 			// 오차범위
+	t_obj	*my; 			// 부딪힌 오브젝트
 }	t_hit;
 
 #endif
