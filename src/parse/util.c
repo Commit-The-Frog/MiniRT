@@ -1,5 +1,19 @@
 #include "minirt.h"
 
+int	check_extension(char *filename)
+{
+	int		i;
+
+	i = 0;
+	while (filename[i] && filename[i] != '.')
+		i++;
+	if (!filename[i] || !filename[i + 1] || !filename[i + 2])
+		return (0);
+	if (filename[i + 1] == 'r' && filename[i + 2] == 't' && !filename[i + 3])
+		return (1);
+	return (0);
+}
+
 void	error_handler(char *msg)
 {
 	ft_putstr_fd("[ERROR] ", 2);
@@ -11,7 +25,11 @@ void	file_controller(t_info *info)
 {
 	if (info->argc != 2)
 		error_handler("argument error");
+	if (!check_extension(info->argv[1]))
+		error_handler("invaild file extension (*.rt required)");
 	info->fd = open(info->argv[1], O_RDONLY);
+	if (info->fd < 0)
+		error_handler("file not found");
 }
 
 void	free_double_char_list(char **list)
