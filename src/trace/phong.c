@@ -97,7 +97,9 @@ unsigned long	phong(t_vec ray, t_hit *hit, t_dim *dim)
 		olist = dim->olist;
 		while (olist)
 		{
-			if (is_hitted(hit->point, *((t_light *)llist->content)->coord, \
+			// if (is_hitted(hit->point, *((t_light *)llist->content)->coord, \
+				// (t_obj *)olist->content, hit->my))
+			if (is_hitted(*((t_light *)llist->content)->coord, hit->point, \
 				(t_obj *)olist->content, hit->my))
 			{
 				flag = 1;

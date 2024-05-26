@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/25 22:16:05 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/26 14:20:49 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ t_hit hit_coord_cal_pl(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 // t값을 바탕으로 hit의 vec, point, obj_color 설정
 t_hit hit_coord_cal_cy(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 {
-	const t_vec	cp = coord2_to_vec(get_coord_by_t(obj->vec, -1 * (obj->height / 2), *obj->coord), hit->point);
+	t_vec	cp;
 
 	hit->point = get_coord_by_t(ray, hit->t, cam);
+	cp = coord2_to_vec(get_coord_by_t(obj->vec, -1 * (obj->height / 2), *obj->coord), hit->point);
 	hit->vec = vsub(cp, vsmul(*obj->vec, vdot(cp, *obj->vec)));
 	norm(&(hit->vec));
 	if (vdot(hit->vec, *ray) > 0)
@@ -124,7 +125,7 @@ t_hit	hit_cy_pl_up(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, up_coord) >= obj->dia / 2 + hit->bias)
+		if (coord_dist(hit->point, up_coord) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
@@ -151,14 +152,14 @@ t_hit	hit_cy_pl_down(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, down_coord) >= obj->dia / 2 + hit->bias)
+		if (coord_dist(hit->point, down_coord) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
 }
 
 t_hit hit_cy(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
-{ // 자글자글한 주름 생기는 오류 있음.
+{
 	t_hit	up;
 	t_hit	down;
 	t_hit	plain;
@@ -189,7 +190,6 @@ t_hit hit_cy(t_vec *ray, t_coord cam, t_obj *obj, t_hit *hit)
 	{
 		hit->hitted = 1;
 		hit->my = obj;
-		// printf("%lf, %lf\n", res.neg_x, res.pos_x);
 		if (res.pos_x > 0)
 			hit->t = res.pos_x;
 		else if (res.neg_x > 0)
