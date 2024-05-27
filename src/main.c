@@ -21,10 +21,10 @@ int	main(int argc, char *argv[])
 	// atexit(check_leak);
 	info.argc = argc;
 	info.argv = argv;
-	// init_mlx(&info);
+	init_mlx(&info);
 	parse(&info, &dim);
-	// cal_main(&dim, &info);
-	// render_mlx(info);
-	// free_all(info, dim);
+	cal_main(&dim, &info);
+	render_mlx(info);
+	free_all(info, dim);
 	return (0);
 }
