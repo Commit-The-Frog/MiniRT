@@ -6,44 +6,40 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:02:39 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 21:36:50 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:02:51 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+void	init_screen(t_dim dim, t_screen *screen)
+{
+	screen->gx = tan(M_PI / 180 * dim.fov / 2);
+	screen->gy = screen->gx * WIN_HEIGHT / WIN_WIDTH;
+	copy_vec(&screen->origin, vsub(vsub(dim.cam_zv, \
+			vsmul(dim.cam_xv, screen->gx)), vsmul(dim.cam_yv, screen->gy)));
+	copy_vec(&screen->dx, vsmul(dim.cam_xv, 2 * screen->gx / (WIN_WIDTH - 1)));
+	copy_vec(&screen->dy, vsmul(dim.cam_yv, 2 * screen->gy / (WIN_HEIGHT - 1)));
+}
+
 void	shoot_ray(t_dim dim, t_info *info)
 {
-	double	gx;
-	double	gy;
-	t_vec	dx;
-	t_vec	dy;
-	int		i;
-	int 	j;
-	t_vec	origin;
-	t_vec	ray;
-	unsigned long	color;
+	t_screen	s;
 
-	gx = tan(M_PI / 180 * dim.fov / 2);
-	gy = gx * WIN_HEIGHT / WIN_WIDTH;
-	copy_vec(&origin, vsub(vsub(dim.cam_zv, vsmul(dim.cam_xv, gx)), vsmul(dim.cam_yv, gy)));
-	copy_vec(&dx, vsmul(dim.cam_xv, 2 * gx / (WIN_WIDTH - 1)));
-	copy_vec(&dy, vsmul(dim.cam_yv, 2 * gy / (WIN_HEIGHT - 1)));
-	i = 0;
-	while (i < WIN_HEIGHT)
+	init_screen(dim, &s);
+	s.i = 0;
+	while (s.i < WIN_HEIGHT)
 	{
-		j = 0;
-		while (j < WIN_WIDTH)
+		s.j = 0;
+		while (s.j < WIN_WIDTH)
 		{
-			// make ray (d = origin + j * dx + i * dy)
-			copy_vec(&ray, vsum(vsum(origin, vsmul(dx, j)), vsmul(dy, i)));
-			norm(&ray);
-			// vector_print(ray);
-			color = raytrace(ray, dim);
-			my_mlx_pixel_put(&info->img, j, i, color);
-			j++;
+			copy_vec(&s.ray, vsum(vsum(s.origin, vsmul(s.dx, s.j)), \
+					vsmul(s.dy, s.i)));
+			norm(&s.ray);
+			my_mlx_pixel_put(&info->img, s.j, s.i, raytrace(s.ray, dim));
+			s.j++;
 		}
-		i++;
+		s.i++;
 	}
 }
 

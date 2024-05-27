@@ -5,13 +5,15 @@ SRCS_PARSE =	parse.c \
 				util.c \
 				env.c \
 				object.c \
-				convert.c
+				convert.c \
+				verify.c
 
 SRCS_CALCUL =	init_dim.c \
 				cal_util.c
 
 SRCS_LINEAR =	product.c \
-				vector.c \
+				vector1.c \
+				vector2.c \
 				color.c \
 				etc.c
 
@@ -45,7 +47,7 @@ LIBFT_NAME = ft
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
-CC = cc -MMD -MP -Wall -Wextra -Werror -fsanitize=address -g
+CC = cc -MMD -MP -Wall -Wextra -Werror #-fsanitize=address -g
 MLX = mlx_macOS
 MLX_FLAG = -lmlx -Lmlx -framework OpenGL -framework AppKit
 NAME = miniRT

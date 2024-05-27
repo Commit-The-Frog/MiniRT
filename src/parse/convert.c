@@ -1,39 +1,44 @@
 #include "minirt.h"
 
+void	init_conv(t_conv *conv, char *str)
+{
+	conv->result = 0;
+	conv->i = 0;
+	conv->sign = 1;
+	conv->div = 10.0f;
+	if (str[conv->i] == '-')
+	{
+		conv->sign *= -1;
+		conv->i++;
+	}
+}
+
 double	conv_to_double(char *str)
 {
-	int		i;
-	int		sign;
-	double	result;
-	double	div;
+	t_conv	c;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	div = 10.0f;
-	if (str[i] == '-')
+	init_conv(&c, str);
+	while (str[c.i] && str[c.i] != '\n' && \
+		(ft_isdigit(str[c.i]) || str[c.i] == '.'))
 	{
-		sign *= -1;
-		i++;
-	}
-	while (str[i] && (ft_isdigit(str[i]) || str[i] == '.'))
-	{
-		if (str[i] == '.')
+		if (str[c.i] == '.')
 		{
-			i++;
-			while (str[i] && ft_isdigit(str[i]))
+			c.i++;
+			while (str[c.i] && str[c.i] != '\n' && ft_isdigit(str[c.i]))
 			{
-				result += (double)(str[i] - '0') / div;
-				div *= 10;
-				i++;
+				c.result += (double)(str[c.i] - '0') / c.div;
+				c.div *= 10;
+				c.i++;
 			}
-			break;
+			break ;
 		}
-		result *= 10;
-		result += str[i] - '0';
-		i++;
+		c.result *= 10;
+		c.result += str[c.i] - '0';
+		c.i++;
 	}
-	return (result * sign);
+	if (str[c.i] != '\0' && str[c.i] != '\n')
+		error_handler("not a number");
+	return (c.result * c.sign);
 }
 
 t_color	conv_to_color(char *str)
@@ -42,9 +47,9 @@ t_color	conv_to_color(char *str)
 	t_color	color;
 
 	list = ft_split(str, ',');
-	color.r = ft_atoi(list[0]);
-	color.g = ft_atoi(list[1]);
-	color.b = ft_atoi(list[2]);
+	color.r = conv_to_double(list[0]);
+	color.g = conv_to_double(list[1]);
+	color.b = conv_to_double(list[2]);
 	free_double_char_list(list);
 	return (color);
 }
