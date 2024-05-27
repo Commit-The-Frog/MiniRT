@@ -10,8 +10,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	init_mlx(t_info *info)
 {
-	info->mlx = mlx_init();
-	info->mlx_win = mlx_new_window(info->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
+	info->mlx = mlx_init(); // mlx init, mlx new window에 대한 null가드 필요.
+	info->mlx_win = mlx_new_window(info->mlx, WIN_WIDTH, WIN_HEIGHT, "Hello World");
 	info->img.img = mlx_new_image(info->mlx, WIN_WIDTH, WIN_HEIGHT);
 	info->img.addr = mlx_get_data_addr(info->img.img, \
 	&info->img.bits_per_pixel, &info->img.line_length, &info->img.endian);

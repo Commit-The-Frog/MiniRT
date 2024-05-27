@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   init_dim.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:02:39 by minjacho          #+#    #+#             */
 /*   Updated: 2024/05/27 16:02:51 by junkim2          ###   ########.fr       */
@@ -46,21 +46,23 @@ void	shoot_ray(t_dim dim, t_info *info)
 // 카메라의 축(vx, vy, vz) 계산
 void	get_cam_dir(t_dim *dim)
 {
-	t_vec	wz;
+	t_vec	wy;
+	t_vec	neg_wy;
 
-	init_vec(0, 0, 1, &wz);
+	init_vec(0, 1, 0, &wy);
+	init_vec(0, -1, 0, &neg_wy);
 	copy_vec(&dim->cam_zv, dim->cam_dir);
-	if (comp_vec(wz, dim->cam_dir))
+	if (comp_vec(wy, dim->cam_dir) || comp_vec(neg_wy, dim->cam_dir))
 	{
 		init_vec(1, 0, 0, &dim->cam_xv);
-		init_vec(0, 1, 0, &dim->cam_yv);
+		init_vec(0, 0, 1, &dim->cam_yv);
 		return ;
 	}
 	norm(&dim->cam_zv);
-	dim->cam_xv = vcross(dim->cam_zv, wz);
+	dim->cam_xv = vcross(dim->cam_zv, wy);
+	norm(&dim->cam_xv);
 	dim->cam_yv = vcross(dim->cam_zv, dim->cam_xv);
 	norm(&dim->cam_yv);
-	norm(&dim->cam_xv);
 }
 
 void	cal_main(t_dim *dim, t_info *info)

@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 17:57:13 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/27 11:18:38 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "hit.h"
+#include "hit.h"
 
 t_hit	hit_obj(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 {
 	if (obj->type == SP)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_sp(ray, cam, obj, hit);
 		*hit = hit_coord_cal_sp(ray, cam, obj, hit);
 		return (*hit);
 	}
 	else if (obj->type == PL)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_pl(ray, cam, obj, hit);
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
 		return (*hit);
 	}
 	else if (obj->type == CY)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_cy(ray, cam, obj, hit);
 		return (*hit);
 	}
@@ -58,7 +58,7 @@ t_hit	hit_obj_iter(t_vec ray, t_coord cam, t_list *olist, t_hit *hit)
 
 unsigned long	raytrace(t_vec ray, t_dim dim)
 {
-	t_hit hit;
+	t_hit	hit;
 
 	hit.hitted = 0;
 	hit = hit_obj_iter(ray, dim.cam_coord, dim.olist, &hit);
