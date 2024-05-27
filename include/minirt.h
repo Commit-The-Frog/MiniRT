@@ -1,16 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minirt.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 18:06:18 by junkim2           #+#    #+#             */
+/*   Updated: 2024/05/27 18:06:18 by junkim2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINIRT_H
 # define MINIRT_H
 
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 # include <mlx.h>
-# include "../get_next_line/get_next_line.h"
 # include "rt_type.h"
 # include "parse.h"
-# include "calculate.h"
 # include "linear.h"
 # include "render.h"
 # include "hit.h"

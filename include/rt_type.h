@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt_type.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 18:06:23 by junkim2           #+#    #+#             */
+/*   Updated: 2024/05/27 18:07:59 by junkim2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RT_TYPE_H
 # define RT_TYPE_H
 
 # include "libft.h"
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -62,15 +75,15 @@ typedef struct s_light
 
 typedef struct s_dim
 {
-	t_coord		cam_coord;	// camera coordinate
-	t_vec		cam_dir;	// camera direction
+	t_coord		cam_coord;
+	t_vec		cam_dir;
 	t_vec		cam_xv;
 	t_vec		cam_yv;
 	t_vec		cam_zv;
-	double		fov;		// fov
-	t_light		amb;		// ambient light
-	t_list		*llist;		// light list
-	t_list		*olist;		// object list
+	double		fov;
+	t_light		amb;
+	t_list		*llist;
+	t_list		*olist;
 	int			count_a;
 	int			count_l;
 	int			count_c;
@@ -88,13 +101,13 @@ typedef struct s_info
 
 typedef struct s_hit
 {
-	int		hitted; 		// hit 여부
-	double	t; 				// p = e + td에서 t값
-	t_coord	point; 			// 접점
-	t_vec	vec; 			// 법선 벡터
-	t_color	obj_color; 		// 물체의 색상
-	double	bias; 			// 오차범위
-	t_obj	*my; 			// 부딪힌 오브젝트
+	int		hitted;
+	double	t;
+	t_coord	point;
+	t_vec	vec;
+	t_color	obj_color;
+	double	bias;
+	t_obj	*my;
 }	t_hit;
 
 #endif
