@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 18:57:09 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:17:26 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ t_hit	hit_coord_cal_sp(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 {
 	hit->point = get_coord_by_t(ray, hit->t, cam);
 	hit->vec = vsub(coord_to_vec(hit->point), coord_to_vec(obj->coord));
+	norm(&(hit->vec));
 	if (vdot(hit->vec, ray) > 0)
 		hit->vec = vrev(hit->vec);
-	norm(&(hit->vec));
+	hit->point = set_bias(hit->vec, hit->point, hit->bias);
 	hit->obj_color = obj->color;
 	return (*hit);
 }
@@ -32,6 +33,7 @@ t_hit	hit_coord_cal_pl(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	norm(&(hit->vec));
 	if (vdot(hit->vec, ray) > 0)
 		hit->vec = vrev(hit->vec);
+	hit->point = set_bias(hit->vec, hit->point, hit->bias);
 	hit->obj_color = obj->color;
 	return (*hit);
 }
@@ -48,6 +50,7 @@ t_hit	hit_coord_cal_cy(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	norm(&(hit->vec));
 	if (vdot(hit->vec, ray) > 0)
 		hit->vec = vrev(hit->vec);
+	hit->point = set_bias(hit->vec, hit->point, hit->bias);
 	hit->obj_color = obj->color;
 	return (*hit);
 }

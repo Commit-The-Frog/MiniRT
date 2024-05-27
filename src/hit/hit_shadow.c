@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:57:12 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 18:59:24 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:19:21 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int	is_hitted(t_coord start, t_coord end, t_obj *obj, t_obj *my)
 	t_vec	vec;
 	double	end_t;
 
-	if (obj == my)
-		return (0);
+	(void)my;
 	vec = vsub(coord_to_vec(end), coord_to_vec(start));
 	norm(&vec);
 	end_t = get_t_by_coord(vec, start, end);
-	res.bias = 0.00001;
+	res.bias = 0;
 	res.hitted = 0;
 	if (obj->type == SP)
 		res = hit_sp(vec, start, obj, &res);

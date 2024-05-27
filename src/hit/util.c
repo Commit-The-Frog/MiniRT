@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:36:59 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 19:00:37 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:21:04 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,14 @@ t_vec	vrev(t_vec vec)
 	res.y *= -1;
 	res.z *= -1;
 	return (res);
+}
+
+t_coord	set_bias(t_vec t, t_coord coord, double bias)
+{
+	if (bias == 0)
+		return (coord);
+	coord.x += t.x * bias;
+	coord.y += t.y * bias;
+	coord.z += t.z * bias;
+	return (coord);
 }

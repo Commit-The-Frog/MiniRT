@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 20:31:23 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 18:43:31 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:18:38 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ t_hit	hit_obj(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 {
 	if (obj->type == SP)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_sp(ray, cam, obj, hit);
 		*hit = hit_coord_cal_sp(ray, cam, obj, hit);
 		return (*hit);
 	}
 	else if (obj->type == PL)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_pl(ray, cam, obj, hit);
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
 		return (*hit);
 	}
 	else if (obj->type == CY)
 	{
-		hit->bias = 0;
+		hit->bias = 0.0001;
 		*hit = hit_cy(ray, cam, obj, hit);
 		return (*hit);
 	}

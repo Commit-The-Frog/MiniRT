@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:05:06 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 19:27:07 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:16:04 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ double			solve_neg(double a, double b, double c);
 t_coord			get_coord_by_t(t_vec vec, double t, t_coord coord);
 double			get_t_by_coord(t_vec vec, t_coord start, t_coord coord);
 t_vec			vrev(t_vec vec);
+t_coord			set_bias(t_vec t, t_coord coord, double bias);
 
 #endif
