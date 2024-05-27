@@ -36,7 +36,7 @@
 - A, L, C 중 하나라도 없는 경우
 
 
-### MINIRT workflow
+### MINIRT 메모리 할당 / 해제 구조
 
 < main >
 - init_mlx() : mlx 창, 이미지 생성
@@ -54,6 +54,10 @@
 - 한 줄씩 파싱
   - gnl 로 char* 할당
   - split 으로 char* -> char** 할당
+  - obj, light 의 경우 olist, llist 에 연결리스트 노드 할당
   - free_double_char_list 로 char** 해제
-  - ** 해제 필요 **
-- 
+  - ( char* 해제 필요 )
+
+< cal_main >
+- 카메라 축 계산
+- RAY 발사
