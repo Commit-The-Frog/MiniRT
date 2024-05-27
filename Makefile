@@ -43,7 +43,7 @@ LIBFT_NAME = ft
 LIBFT = libft/libft.a
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
-CC = cc -MMD -MP -Wall -Wextra -Werror -fsanitize=address -g
+CC = cc -MMD -MP -Wall -Wextra -Werror #-fsanitize=address -g
 MLX = mlx_macOS
 MLX_FLAG = -lmlx -Lmlx -framework OpenGL -framework AppKit
 NAME = miniRT

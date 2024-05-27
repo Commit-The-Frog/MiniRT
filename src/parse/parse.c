@@ -56,6 +56,7 @@ void	parse(t_info *info, t_dim *dim)
 	{
 		line = get_next_line(info->fd);
 		parse_line(dim, line);
+		free(line);
 	}
 	if (dim->count_a == 0 || dim->count_c == 0 || dim->count_l == 0)
 		error_handler("scene must have at least one A, C, L");

@@ -61,3 +61,11 @@
 < cal_main >
 - 카메라 축 계산
 - RAY 발사
+  - RAY trace
+
+< render_mlx >
+- mlx 창에 이미지 렌더
+- mlx key hook
+  - 창 닫기 + exit
+  - ( img, win 해제 필요 )
+- mlx loop
