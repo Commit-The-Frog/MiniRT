@@ -12,7 +12,8 @@ SRCS_CALCUL =	init_dim.c \
 				cal_util.c
 
 SRCS_LINEAR =	product.c \
-				vector.c \
+				vector1.c \
+				vector2.c \
 				color.c \
 				etc.c
 
