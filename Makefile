@@ -8,9 +8,6 @@ SRCS_PARSE =	parse.c \
 				convert.c \
 				verify.c
 
-SRCS_CALCUL =	init_dim.c \
-				cal_util.c
-
 SRCS_LINEAR =	product.c \
 				vector1.c \
 				vector2.c \
@@ -27,15 +24,11 @@ SRCS_HIT 	=	hit.c \
 				hit_cy.c \
 				hit_shadow.c
 
-SRCS_TRACE	=	phong.c
-
-SRCS_GNL =	get_next_line.c \
-			get_next_line_utils.c
+SRCS_TRACE	=	phong.c \
+				ray.c
 
 SRCS = \
-	$(addprefix get_next_line/, $(SRCS_GNL)) \
 	$(addprefix src/parse/, $(SRCS_PARSE)) \
-	$(addprefix src/calculate/, $(SRCS_CALCUL)) \
 	$(addprefix src/linear/, $(SRCS_LINEAR)) \
 	$(addprefix src/render/, $(SRCS_RENDER)) \
 	$(addprefix src/hit/, $(SRCS_HIT)) \

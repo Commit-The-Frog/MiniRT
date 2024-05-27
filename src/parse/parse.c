@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 17:59:33 by junkim2           #+#    #+#             */
+/*   Updated: 2024/05/27 17:59:34 by junkim2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 // exit with free list
@@ -62,5 +74,4 @@ void	parse(t_info *info, t_dim *dim)
 		error_handler("scene must have at least one A, C, L");
 	if (dim->count_a > 1 || dim->count_c > 1)
 		error_handler("scene cannot have more than one A, C");
-	print_dim(dim);
 }
