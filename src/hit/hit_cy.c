@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:54:36 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/27 17:44:10 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:49:17 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ t_hit	hit_cy_pl_up(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, set_bias(obj->vec, up_coord, hit->bias * -1)) >= obj->dia / 2)
+		if (coord_dist(hit->point, \
+			set_bias(obj->vec, up_coord, hit->bias * -1)) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
@@ -60,7 +61,8 @@ t_hit	hit_cy_pl_down(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, set_bias(obj->vec, down_coord, hit->bias)) >= obj->dia / 2)
+		if (coord_dist(hit->point, \
+			set_bias(obj->vec, down_coord, hit->bias)) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
@@ -133,7 +135,8 @@ t_hit	hit_cy(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	plain = hit_cy_pl(ray, cam, obj, &plain);
 	if (plain.hitted)
 	{
-		if (!hit->hitted || coord_dist(cam, plain.point) < coord_dist(cam, hit->point))
+		if (!hit->hitted || \
+			coord_dist(cam, plain.point) < coord_dist(cam, hit->point))
 			*hit = plain;
 	}
 	return (*hit);
