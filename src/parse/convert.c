@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:59:12 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/27 17:59:12 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/27 18:30:47 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_color	conv_to_color(char *str)
 	t_color	color;
 
 	list = ft_split(str, ',');
+	if (get_list_len(list) != 3)
+		error_handler("color must have 3 values");
 	color.r = conv_to_double(list[0]);
 	color.g = conv_to_double(list[1]);
 	color.b = conv_to_double(list[2]);
@@ -72,6 +74,8 @@ t_coord	conv_to_coord(char *str)
 	char	**list;
 
 	list = ft_split(str, ',');
+	if (get_list_len(list) != 3)
+		error_handler("coord must have 3 values");
 	coord.x = conv_to_double(list[0]);
 	coord.y = conv_to_double(list[1]);
 	coord.z = conv_to_double(list[2]);
@@ -85,6 +89,8 @@ t_vec	conv_to_vec(char *str)
 	char	**list;
 
 	list = ft_split(str, ',');
+	if (get_list_len(list) != 3)
+		error_handler("vector must have 3 values");
 	vec.x = conv_to_double(list[0]);
 	vec.y = conv_to_double(list[1]);
 	vec.z = conv_to_double(list[2]);
