@@ -1,7 +1,15 @@
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "minirt.h"
+# include "minirt.h"
+
+typedef struct s_conv
+{
+	int		i;
+	int		sign;
+	double	result;
+	double	div;
+}	t_conv;
 
 //	parse.c
 void		exit_with_free(char **list, char *msg);
@@ -14,9 +22,9 @@ void		free_double_char_list(char **list);
 int			get_list_len(char **list);
 void		print_dim(t_dim *dim);
 //	type.c
-void		parse_type_A(t_dim *dim, char **list);
-void		parse_type_C(t_dim *s_dim, char **list);
-void		parse_type_L(t_dim *dim, char **list);
+void		parse_type_a(t_dim *dim, char **list);
+void		parse_type_c(t_dim *s_dim, char **list);
+void		parse_type_l(t_dim *dim, char **list);
 void		parse_type_obj(t_dim *dim, char **list, t_type type);
 //	convert.c
 double		conv_to_double(char *str);
@@ -28,6 +36,6 @@ double		verify_ratio(char *str);
 t_color		verify_rgb(char *str);
 t_vec		verify_vector(char *str);
 double		verify_fov(char *str);
-double	verify_length(char *str);
+double		verify_length(char *str);
 
 #endif
