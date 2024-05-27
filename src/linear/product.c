@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   product.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 18:08:22 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/27 18:44:43 by junkim2          ###   ########.fr       */
+/*   Created: 2024/02/22 18:24:24 by minjacho          #+#    #+#             */
+/*   Updated: 2024/05/27 17:59:03 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	free_all(t_info info, t_dim dim)
+// cross product vector v1 and v2, result will saved in res, and return result
+t_vec	vcross(t_vec v1, t_vec v2)
 {
-	ft_lstclear(&dim.llist, free);
-	ft_lstclear(&dim.olist, free);
-	free(info.mlx);
-	free(info.mlx_win);
+	t_vec	res;
+
+	res.x = v1.y * v2.z - v1.z * v2.y;
+	res.y = v1.z * v2.x - v1.x * v2.z;
+	res.z = v1.x * v2.y - v1.y * v2.x;
+	return (res);
 }
 
-int	main(int argc, char *argv[])
+// dot product vector v1 and v2, and return result
+double	vdot(t_vec v1, t_vec v2)
 {
-	t_info	info;
-	t_dim	dim;
+	double	res;
 
-	info.argc = argc;
-	info.argv = argv;
-	init_mlx(&info);
-	parse(&info, &dim);
-	cal_main(&dim, &info);
-	render_mlx(info);
-	free_all(info, dim);
-	return (0);
+	res = 0;
+	res += v1.x * v2.x;
+	res += v1.y * v2.y;
+	res += v1.z * v2.z;
+	return (res);
 }

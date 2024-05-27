@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 18:08:22 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/27 18:44:43 by junkim2          ###   ########.fr       */
+/*   Created: 2024/05/27 18:08:08 by junkim2           #+#    #+#             */
+/*   Updated: 2024/05/27 18:08:08 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-void	free_all(t_info info, t_dim dim)
-{
-	ft_lstclear(&dim.llist, free);
-	ft_lstclear(&dim.olist, free);
-	free(info.mlx);
-	free(info.mlx_win);
-}
+# include "minirt.h"
 
-int	main(int argc, char *argv[])
-{
-	t_info	info;
-	t_dim	dim;
+/* hook */
+int				mlx_exit(t_info *info);
+int				key(int keycode, t_info *info);
 
-	info.argc = argc;
-	info.argv = argv;
-	init_mlx(&info);
-	parse(&info, &dim);
-	cal_main(&dim, &info);
-	render_mlx(info);
-	free_all(info, dim);
-	return (0);
-}
+/* render.c */
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			init_mlx(t_info *info);
+void			render_mlx(t_info info);
+unsigned long	rgb_to_hex(t_color color);
+
+#endif

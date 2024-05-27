@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   trace.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 18:08:22 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/27 18:44:43 by junkim2          ###   ########.fr       */
+/*   Created: 2024/05/27 17:51:48 by junkim2           #+#    #+#             */
+/*   Updated: 2024/05/27 17:52:10 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef TRACE_H
+# define TRACE_H
 
-void	free_all(t_info info, t_dim dim)
+# include "minirt.h"
+
+typedef struct s_screen
 {
-	ft_lstclear(&dim.llist, free);
-	ft_lstclear(&dim.olist, free);
-	free(info.mlx);
-	free(info.mlx_win);
-}
+	double	gx;
+	double	gy;
+	t_vec	dx;
+	t_vec	dy;
+	int		i;
+	int		j;
+	t_vec	origin;
+	t_vec	ray;
+}	t_screen;
 
-int	main(int argc, char *argv[])
-{
-	t_info	info;
-	t_dim	dim;
+/* ray.c */
+void			cal_main(t_dim *dim, t_info *info);
 
-	info.argc = argc;
-	info.argv = argv;
-	init_mlx(&info);
-	parse(&info, &dim);
-	cal_main(&dim, &info);
-	render_mlx(info);
-	free_all(info, dim);
-	return (0);
-}
+/* phong.c  */
+unsigned long	phong(t_vec ray, t_hit hit, t_dim dim);
+
+#endif
