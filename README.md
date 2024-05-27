@@ -34,3 +34,38 @@
 - 정보의 순서가 맞지 않는 줄
 - 각 정보의 형식이 맞지 않는 줄
 - A, L, C 중 하나라도 없는 경우
+
+
+### MINIRT 메모리 할당 / 해제 구조
+
+< main >
+- init_mlx() : mlx 창, 이미지 생성
+- parse() : 파싱
+- cal_main() : 연산
+- render_mlx() : mlx 창에 이미지 렌더링, hook & loop
+
+< init_mlx >
+- info.mlx_win 할당
+- info.img 할당
+
+< parse >
+- file open
+- dim 초기화
+- 한 줄씩 파싱
+  - gnl 로 char* 할당
+  - split 으로 char* -> char** 할당
+  - obj, light 의 경우 olist, llist 에 연결리스트 노드 할당
+  - free_double_char_list 로 char** 해제
+  - ( char* 해제 필요 )
+
+< cal_main >
+- 카메라 축 계산
+- RAY 발사
+  - RAY trace
+
+< render_mlx >
+- mlx 창에 이미지 렌더
+- mlx key hook
+  - 창 닫기 + exit
+  - ( img, win 해제 필요 )
+- mlx loop

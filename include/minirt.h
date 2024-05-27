@@ -16,7 +16,7 @@
 # include "hit.h"
 # include "trace.h"
 
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 960
+# define WIN_WIDTH 500
+# define WIN_HEIGHT 500
 
 #endif
