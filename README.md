@@ -56,7 +56,7 @@
   - split 으로 char* -> char** 할당
   - obj, light 의 경우 olist, llist 에 연결리스트 노드 할당
   - free_double_char_list 로 char** 해제
-  - ( char* 해제 필요 )
+  - char* 해제
 
 < cal_main >
 - 카메라 축 계산

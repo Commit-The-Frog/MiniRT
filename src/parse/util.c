@@ -6,7 +6,7 @@
 /*   By: junkim2 <junkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:59:43 by junkim2           #+#    #+#             */
-/*   Updated: 2024/05/27 18:08:54 by junkim2          ###   ########.fr       */
+/*   Updated: 2024/05/27 18:36:54 by junkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_extension(char *filename)
 
 void	error_handler(char *msg)
 {
-	ft_putstr_fd("[ERROR] ", 2);
+	ft_putstr_fd("ERROR\n", 2);
 	ft_putendl_fd(msg, 2);
 	exit(1);
 }
