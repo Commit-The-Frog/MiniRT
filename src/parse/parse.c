@@ -61,5 +61,5 @@ void	parse(t_info *info, t_dim *dim)
 		error_handler("scene must have at least one A, C, L");
 	if (dim->count_a > 1 || dim->count_c > 1)
 		error_handler("scene cannot have more than one A, C");
-	print_dim(dim);
+	// print_dim(dim);
 }
