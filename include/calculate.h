@@ -3,6 +3,18 @@
 
 # include "minirt.h"
 
+typedef struct s_screen
+{
+	double	gx;
+	double	gy;
+	t_vec	dx;
+	t_vec	dy;
+	int		i;
+	int		j;
+	t_vec	origin;
+	t_vec	ray;
+}	t_screen;
+
 /* init_dim.c */
 void	cal_main(t_dim *dim, t_info *info);
 

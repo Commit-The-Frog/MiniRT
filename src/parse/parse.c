@@ -27,11 +27,11 @@ int	parse_line(t_dim *dim, char *line)
 	if (list == NULL)
 		error_handler("allocation error");
 	if (!ft_strncmp(list[0], "A", 1) && ft_strlen(list[0]) == 1)
-		parse_type_A(dim, list);
+		parse_type_a(dim, list);
 	else if (!ft_strncmp(list[0], "C", 1) && ft_strlen(list[0]) == 1)
-		parse_type_C(dim, list);
+		parse_type_c(dim, list);
 	else if (!ft_strncmp(list[0], "L", 1) && ft_strlen(list[0]) == 1)
-		parse_type_L(dim, list);
+		parse_type_l(dim, list);
 	else if (!ft_strncmp(list[0], "sp", 2) && ft_strlen(list[0]) == 2)
 		parse_type_obj(dim, list, SP);
 	else if (!ft_strncmp(list[0], "pl", 2) && ft_strlen(list[0]) == 2)
@@ -62,5 +62,5 @@ void	parse(t_info *info, t_dim *dim)
 		error_handler("scene must have at least one A, C, L");
 	if (dim->count_a > 1 || dim->count_c > 1)
 		error_handler("scene cannot have more than one A, C");
-	// print_dim(dim);
+	print_dim(dim);
 }

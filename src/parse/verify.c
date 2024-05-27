@@ -5,7 +5,7 @@
 // if invalid, program exit with freeing every data
 double	verify_ratio(char *str)
 {
-	double res;
+	double	res;
 
 	res = conv_to_double(str);
 	if (res < 0 || 1 < res)
@@ -59,7 +59,7 @@ double	verify_fov(char *str)
 // if invalid, program exit with freeing every data
 double	verify_length(char *str)
 {
-	double res;
+	double	res;
 
 	res = conv_to_double(str);
 	if (res < 0)

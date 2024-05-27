@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-void	parse_type_A(t_dim *dim, char **list)
+void	parse_type_a(t_dim *dim, char **list)
 {
 	if (get_list_len(list) != 3)
 		error_handler("number of info is invalid : <Amb light>");
@@ -10,7 +10,7 @@ void	parse_type_A(t_dim *dim, char **list)
 	dim->count_a += 1;
 }
 
-void	parse_type_C(t_dim *dim, char **list)
+void	parse_type_c(t_dim *dim, char **list)
 {
 	if (get_list_len(list) != 4)
 		error_handler("number of info is invalid : <Camera>");
@@ -20,7 +20,7 @@ void	parse_type_C(t_dim *dim, char **list)
 	dim->count_c += 1;
 }
 
-void	parse_type_L(t_dim *dim, char **list)
+void	parse_type_l(t_dim *dim, char **list)
 {
 	t_light	*light;
 

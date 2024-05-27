@@ -8,12 +8,12 @@ void	free_all(t_info info, t_dim dim)
 	free(info.mlx_win);
 }
 
-void	check_leak()
+void	check_leak(void)
 {
 	system("leaks miniRT");
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_info	info;
 	t_dim	dim;
@@ -26,5 +26,5 @@ int main(int argc, char *argv[])
 	cal_main(&dim, &info);
 	render_mlx(info);
 	free_all(info, dim);
-    return (0);
+	return (0);
 }
