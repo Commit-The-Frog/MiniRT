@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 18:54:36 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/26 18:59:48 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:44:10 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hit	hit_cy_pl_up(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, up_coord) >= obj->dia / 2)
+		if (coord_dist(hit->point, set_bias(obj->vec, up_coord, hit->bias * -1)) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
@@ -60,7 +60,7 @@ t_hit	hit_cy_pl_down(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 		hit->hitted = 1;
 		hit->my = obj;
 		*hit = hit_coord_cal_pl(ray, cam, obj, hit);
-		if (coord_dist(hit->point, down_coord) >= obj->dia / 2)
+		if (coord_dist(hit->point, set_bias(obj->vec, down_coord, hit->bias)) >= obj->dia / 2)
 			hit->hitted = 0;
 	}
 	return (*hit);
@@ -71,6 +71,8 @@ t_hit	hit_cy_pl(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	t_hit	up;
 	t_hit	down;
 
+	up.bias = hit->bias;
+	down.bias = hit->bias;
 	up = hit_cy_pl_up(ray, cam, obj, &up);
 	down = hit_cy_pl_down(ray, cam, obj, &down);
 	if (up.hitted && down.hitted)
@@ -96,7 +98,7 @@ t_hit	hit_cy_side(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 		obj->coord), cam);
 	res = solve_with_det(pow(vdot(obj->vec, ray), 2) - 1, \
 		vdot(obj->vec, ray) * vdot(ce, obj->vec) - vdot(ce, ray), \
-		pow(obj->dia / 2 + hit->bias, 2) - \
+		pow(obj->dia / 2, 2) - \
 		vdot(ce, ce) + pow(vdot(ce, obj->vec), 2));
 	if (res.det <= 0)
 		hit->hitted = 0;
@@ -119,7 +121,6 @@ t_hit	hit_cy(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	t_hit	plain;
 
 	norm(&obj->vec);
-	plain = hit_cy_pl(ray, cam, obj, &plain);
 	*hit = hit_cy_side(ray, cam, obj, hit);
 	if (hit->hitted)
 	{
@@ -128,9 +129,11 @@ t_hit	hit_cy(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 			obj->vec)) >= obj->height / 2)
 			hit->hitted = 0;
 	}
+	plain.bias = hit->bias;
+	plain = hit_cy_pl(ray, cam, obj, &plain);
 	if (plain.hitted)
 	{
-		if (!hit->hitted || plain.t < hit->t)
+		if (!hit->hitted || coord_dist(cam, plain.point) < coord_dist(cam, hit->point))
 			*hit = plain;
 	}
 	return (*hit);

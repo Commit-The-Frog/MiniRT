@@ -6,7 +6,7 @@
 /*   By: minjacho <minjacho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:53:00 by minjacho          #+#    #+#             */
-/*   Updated: 2024/05/27 11:17:26 by minjacho         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:40:48 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_hit	hit_sp(t_vec ray, t_coord cam, t_obj *obj, t_hit *hit)
 	centerv = coord_to_vec(obj->coord);
 	camv = coord_to_vec(cam);
 	res = solve_with_det(vsizesq(ray), vdot(ray, vsub(camv, centerv)), \
-		vsizesq(vsub(camv, centerv)) - pow(obj->dia / 2 + hit->bias, 2));
+		vsizesq(vsub(camv, centerv)) - pow(obj->dia / 2, 2));
 	if (res.det <= 1e-6)
 		hit->hitted = 0;
 	else
